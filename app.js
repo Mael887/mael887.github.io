@@ -1,3 +1,5 @@
+
+// ─── Source: js/data.js ───
 const NAV_ITEMS = [
   {label:'Inicio',href:'pag.html',icon:'🏠'},
   {label:'Aula Extendida',href:'pag2.html',icon:'📚'}
@@ -110,74 +112,232 @@ const ACTIVITIES = [
   {dot:'#F59E0B',text:'Aplicaste a beca Ser Pilo Paga',pts:'',time:'Ayer · 10:15 AM'},
 ];
 
-let selectedZone = 'Todos';
-let selectedMode = 'Todos';
+const DEFAULT_STATE = {
+  xp: 1380,
+  level: 4,
+  streak: 7,
+  profileCompletion: 60,
+  userInterests: [],
+  vocProfile: null,
+  appliedJobs: [],     // IDs of applied jobs
+  completedJobs: [],   // IDs of completed jobs
+  courseProgress: {
+    'Machine Learning — Stanford / Coursera': 67,
+    'Practical Deep Learning for Coders': 40,
+    'Deep Learning Specialization': 88,
+    'Python Bootcamp: De Cero a Héroe': 55,
+    'Data Science Profesional con Python — IBM': 30,
+    'Introduction to Computing & Programming': 0,
+    'The Missing Semester — MIT': 20,
+    'NLP con Transformers — Hugging Face': 0,
+    'Emprendimiento e Innovación — Google': 72,
+    'Marketing Digital & E-Commerce': 45
+  },
+  activities: [
+    {dot:'#10B981', text:'Completaste test vocacional', pts:'+25 pts', time:'Hace 2 horas'},
+    {dot:'#3B82F6', text:'Avanzaste 20% en ML con Python', pts:'', time:'Ayer · 4:30 PM'},
+    {dot:'#F59E0B', text:'Aplicaste a beca Ser Pilo Paga', pts:'', time:'Ayer · 10:15 AM'}
+  ],
+  tutorings: [], // scheduled session details
+  tutors: [],    // user-added tutors (custom)
+  dailyTasks: {
+    perfil: false,
+    vocational: false,
+    microjob: false,
+    map: false
+  },
+  weeklyObjectivesChecked: {
+    mateClase: true,
+    tutoriaCompletada: true,
+    quizEnviado: true,
+    repasarFisica: false,
+    agendarTutoria: false
+  },
+  theme: 'light' // 'light' or 'dark'
+};
 
-function initApp() {
-  initNav();
-  initBurger();
-  setActiveNav();
-  initPage();
+// ─── Source: js/state.js ───
+
+let state = { ...DEFAULT_STATE };
+
+let onStateChangeCallback = null;
+function registerStateChangeListener(callback) {
+  onStateChangeCallback = callback;
 }
 
-function initNav() {
-  const desktopNav = document.getElementById('desktopNav');
-  const mobileNav = document.getElementById('mobileNav');
-  const mobileMenu = document.getElementById('mobileMenu');
-  if (desktopNav) {
-    desktopNav.innerHTML = NAV_ITEMS.map(item => `<button class="nav-btn" data-href="${item.href}">${item.icon} ${item.label}</button>`).join('');
-    desktopNav.querySelectorAll('button').forEach(btn => btn.addEventListener('click', () => window.location.href = btn.dataset.href));
-  }
-  if (mobileNav) {
-    mobileNav.innerHTML = NAV_ITEMS.map(item => `<button class="mob-nav-btn" data-href="${item.href}"><span class="mob-nav-icon">${item.icon}</span>${item.label}</button>`).join('');
-    mobileNav.querySelectorAll('button').forEach(btn => btn.addEventListener('click', () => window.location.href = btn.dataset.href));
-  }
-  if (mobileMenu) {
-    mobileMenu.innerHTML = NAV_ITEMS.map(item => `<button class="nav-btn" data-href="${item.href}">${item.icon} ${item.label}</button>`).join('');
-    mobileMenu.querySelectorAll('button').forEach(btn => btn.addEventListener('click', () => window.location.href = btn.dataset.href));
-  }
-}
-
-function setActiveNav() {
-  const current = window.location.pathname.split('/').pop() || 'pag.html';
-  document.querySelectorAll('.nav-btn, .mob-nav-btn').forEach(btn => {
-    if (btn.dataset.href && btn.dataset.href.endsWith(current)) {
-      btn.classList.add('active');
-    } else {
-      btn.classList.remove('active');
+function loadState() {
+  const saved = localStorage.getItem('proximo_state');
+  if (saved) {
+    try {
+      state = JSON.parse(saved);
+      // Merge with default in case of schema updates
+      for (let key in DEFAULT_STATE) {
+        if (state[key] === undefined) {
+          state[key] = DEFAULT_STATE[key];
+        }
+      }
+    } catch (e) {
+      console.error("Error loading state from localStorage", e);
+      state = { ...DEFAULT_STATE };
     }
+  }
+  applyTheme();
+}
+
+function saveState() {
+  localStorage.setItem('proximo_state', JSON.stringify(state));
+  if (onStateChangeCallback) {
+    onStateChangeCallback();
+  }
+}
+
+function applyTheme() {
+  if (state.theme === 'dark') {
+    document.body.classList.add('dark-theme');
+  } else {
+    document.body.classList.remove('dark-theme');
+  }
+}
+
+function toggleTheme() {
+  state.theme = state.theme === 'dark' ? 'light' : 'dark';
+  applyTheme();
+  saveState();
+  playClickSound();
+}
+
+let showToastCallback = null;
+function registerShowToast(callback) {
+  showToastCallback = callback;
+}
+
+function addXP(amount, activityText) {
+  state.xp += amount;
+  
+  let newLevel = state.level;
+  if (state.xp >= 1500 && state.level < 5) {
+    newLevel = 5;
+    state.dailyTasks.perfil = true;
+  }
+  
+  const now = new Date();
+  const timeStr = now.toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit' }) + " · Hoy";
+  state.activities.unshift({
+    dot: '#10B981',
+    text: activityText,
+    pts: `+${amount} pts`,
+    time: timeStr
   });
+  
+  if (state.activities.length > 8) {
+    state.activities.pop();
+  }
+
+  if (newLevel > state.level) {
+    state.level = newLevel;
+    playLevelUpSound();
+    if (showToastCallback) showToastCallback(`¡Subiste al Nivel ${newLevel}! 🎉`);
+  } else {
+    playSuccessSound();
+    if (showToastCallback) showToastCallback(`+${amount} XP: ${activityText}`);
+  }
+  
+  saveState();
 }
 
-function initBurger() {
-  const burgerBtn = document.getElementById('burgerBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-  if (burgerBtn && mobileMenu) {
-    burgerBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+// ─── Source: js/audio.js ───
+function playClickSound() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(600, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(100, ctx.currentTime + 0.1);
+    
+    gain.gain.setValueAtTime(0.04, ctx.currentTime);
+    gain.gain.linearRampToValueAtTime(0.001, ctx.currentTime + 0.1);
+    
+    osc.start();
+    osc.stop(ctx.currentTime + 0.1);
+  } catch (e) {
+    console.log("AudioContext blocked or unsupported", e);
   }
 }
 
-function initPage() {
-  if (document.getElementById('quoteText')) {
-    renderQuote();
-    renderDate();
-    renderTimer();
-    renderJobFilters();
-    renderJobs();
-    renderOpps();
-    renderCourses();
-    renderActivities();
-    renderVocOptions();
+function playSuccessSound() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    
+    osc.type = 'triangle';
+    const now = ctx.currentTime;
+    osc.frequency.setValueAtTime(523.25, now); // C5
+    osc.frequency.setValueAtTime(659.25, now + 0.08); // E5
+    osc.frequency.setValueAtTime(783.99, now + 0.16); // G5
+    osc.frequency.setValueAtTime(1046.50, now + 0.24); // C6
+    
+    gain.gain.setValueAtTime(0.06, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+    
+    osc.start();
+    osc.stop(now + 0.4);
+  } catch (e) {
+    console.log("AudioContext blocked or unsupported", e);
   }
-  if (document.getElementById('aula-tabs')) {
-    aulaTab('clases');
-  }
-  const modal = document.getElementById('modal-clase');
-  if (modal) {
-    modal.addEventListener('click', function (e) {
-      if (e.target === this) cerrarModal();
+}
+
+function playLevelUpSound() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const now = ctx.currentTime;
+    
+    const frequencies = [261.63, 329.63, 392.00, 523.25];
+    frequencies.forEach((freq, index) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      
+      osc.type = index % 2 === 0 ? 'triangle' : 'sine';
+      osc.frequency.setValueAtTime(freq, now + index * 0.05);
+      osc.frequency.setValueAtTime(freq * 2, now + 0.2 + index * 0.05);
+      
+      gain.gain.setValueAtTime(0.05, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+      
+      osc.start();
+      osc.stop(now + 0.5);
     });
+  } catch (e) {
+    console.log("AudioContext blocked or unsupported", e);
   }
+}
+
+// ─── Source: js/ui.js ───
+
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  if (!toast) return;
+  toast.textContent = message;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2200);
+}
+
+function renderPillGroup(containerId, items, activeValue, onClick) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  container.innerHTML = items.map(item => `<button type="button" class="pill${item === activeValue ? ' active' : ''}" data-value="${item}">${item}</button>`).join('');
+  container.querySelectorAll('button').forEach(btn => btn.addEventListener('click', () => {
+    onClick(btn.dataset.value);
+    renderPillGroup(containerId, items, btn.dataset.value, onClick);
+  }));
 }
 
 function renderQuote() {
@@ -205,6 +365,268 @@ function renderTimer() {
   H.textContent = '14';
   M.textContent = '37';
 }
+
+function renderOpps() {
+  const grid = document.getElementById('oppsGrid');
+  if (!grid) return;
+  grid.innerHTML = OPPS.map(opp => `
+    <div class="opp-card ${opp.cls}">
+      <div class="opp-emoji">${opp.emoji}</div>
+      <div class="opp-type">${opp.type}</div>
+      <div class="opp-name">${opp.name}</div>
+      <div class="opp-detail">${opp.detail}</div>
+    </div>
+  `).join('');
+}
+
+function renderCourses() {
+  const list = document.getElementById('coursesList');
+  if (!list) return;
+  list.innerHTML = COURSES.map(course => `
+    <div class="course-item" style="background:${course.bg}">
+      <div class="course-thumb">${course.emoji}</div>
+      <div class="course-info">
+        <div class="course-name">${course.name}</div>
+        <div class="course-org">${course.org}</div>
+        <div class="course-why">${course.why}</div>
+      </div>
+      <div class="course-right">
+        <div class="course-pct">${course.pct}%</div>
+        <div class="course-bar-track"><div class="course-bar-fill" style="width:${course.pct}%;"></div></div>
+        <span class="course-platform-badge ${course.badge}">${course.plat}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderActivities() {
+  const list = document.getElementById('activityList');
+  if (!list) return;
+  list.innerHTML = state.activities.map(activity => `
+    <div class="act-item">
+      <span class="act-dot" style="background:${activity.dot}"></span>
+      <div>
+        <div class="act-text">${activity.text}</div>
+        <div class="act-time">${activity.time}</div>
+      </div>
+      <div class="act-pts">${activity.pts}</div>
+    </div>
+  `).join('');
+}
+
+function updateUIFromState() {
+  // Update header XP
+  const xpChips = document.querySelectorAll('.xp-chip');
+  xpChips.forEach(chip => {
+    chip.innerHTML = `${state.xp.toLocaleString()} XP <em>· Niv.${state.level}</em>`;
+  });
+
+  // Welcome section changes (for page 1)
+  const welcomeAvatar = document.querySelector('.welcome-avatar');
+  if (welcomeAvatar) {
+    if (state.vocProfile && PROFILES[state.vocProfile]) {
+      welcomeAvatar.textContent = PROFILES[state.vocProfile].icon;
+    } else {
+      welcomeAvatar.textContent = 'SC';
+    }
+  }
+
+  const welcomeRight = document.querySelector('.welcome-right');
+  if (welcomeRight) {
+    const badgeA = welcomeRight.querySelector('.w-badge-a');
+    if (badgeA) {
+      const levelNames = { 4: 'Explorador', 5: 'Innovador' };
+      badgeA.textContent = `⭐ Nivel ${state.level} — ${levelNames[state.level] || 'Explorador'}`;
+    }
+    const streakBadge = welcomeRight.querySelector('.w-badge-g');
+    if (streakBadge) {
+      streakBadge.textContent = `🔥 ${state.streak} días de racha`;
+    }
+    const onboardPct = welcomeRight.querySelector('.onboard-pct');
+    if (onboardPct) {
+      onboardPct.textContent = `${state.profileCompletion}%`;
+    }
+    const onboardFill = welcomeRight.querySelector('.onboard-fill');
+    if (onboardFill) {
+      onboardFill.style.width = `${state.profileCompletion}%`;
+    }
+  }
+
+  // Update Daily Tasks Card (Missions)
+  const heroTasks = document.querySelector('.hero-tasks');
+  if (heroTasks) {
+    const taskList = [
+      { name: 'Perfil completado', done: state.profileCompletion >= 100 },
+      { name: 'Test vocacional', done: state.vocProfile !== null },
+      { name: '1 microtrabajo', done: state.dailyTasks.microjob },
+      { name: 'Explorar mapa', done: state.dailyTasks.map }
+    ];
+    heroTasks.innerHTML = taskList.map(task => `
+      <div class="hero-task ${task.done ? 'done' : 'todo'}">
+        <div class="task-dot ${task.done ? 'done' : 'todo'}">
+          ${task.done ? '<svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>' : ''}
+        </div>
+        ${task.name}
+      </div>
+    `).join('');
+  }
+
+  // Update Level Progress Card
+  const progCard = document.querySelector('.prog-card');
+  if (progCard) {
+    const levelCircle = progCard.querySelector('.level-circle');
+    if (levelCircle) levelCircle.textContent = state.level;
+    const levelName = progCard.querySelector('.level-name');
+    if (levelName) {
+      const levelNames = { 4: 'Explorador', 5: 'Innovador' };
+      levelName.textContent = levelNames[state.level] || 'Explorador';
+    }
+    const levelPtsLbl = progCard.querySelector('.level-pts-lbl');
+    if (levelPtsLbl) {
+      levelPtsLbl.textContent = `${state.xp.toLocaleString()} / 1.500 pts`;
+    }
+    const ptsBig = progCard.querySelector('.pts-big');
+    if (ptsBig) ptsBig.textContent = state.xp.toLocaleString();
+    
+    const targetXP = 1500;
+    const pct = Math.min(100, Math.round((state.xp / targetXP) * 100));
+    const progPct = progCard.querySelector('.prog-pct');
+    if (progPct) progPct.textContent = `${pct}%`;
+    const progFill = progCard.querySelector('.prog-fill');
+    if (progFill) progFill.style.width = `${pct}%`;
+    
+    const milestone = progCard.querySelector('.prog-milestone');
+    if (milestone) {
+      if (state.level >= 5) {
+        milestone.innerHTML = '✦ ¡Has alcanzado el nivel máximo disponible! 🚀';
+      } else {
+        const remaining = targetXP - state.xp;
+        milestone.innerHTML = `✦ Te faltan ${remaining} pts para Nivel 5 — Innovador`;
+      }
+    }
+
+    const achievements = progCard.querySelector('.achievements');
+    if (achievements) {
+      achievements.innerHTML = `
+        <div class="ach earned"><span class="ach-emoji">🚀</span><span class="ach-name">Primer trabajo</span></div>
+        <div class="ach earned"><span class="ach-emoji">📚</span><span class="ach-name">Aprendiz</span></div>
+        <div class="ach earned"><span class="ach-emoji">🔥</span><span class="ach-name">Racha 7d</span></div>
+        <div class="ach ${state.level >= 5 ? 'earned' : 'ach-fade'}">
+          <span class="ach-emoji">🌟</span>
+          <span class="ach-name">Niv. 5</span>
+          ${state.level < 5 ? '<span class="ach-lock">🔒</span>' : ''}
+        </div>
+      `;
+    }
+  }
+
+  // Update Activity List
+  renderActivities();
+
+  // Update Weekly objectives on page 2
+  const pageAula = document.getElementById('page-aula');
+  if (pageAula) {
+    let checkedCount = 0;
+    for (let key in state.weeklyObjectivesChecked) {
+      if (state.weeklyObjectivesChecked[key]) checkedCount++;
+    }
+    
+    const pctSpan = pageAula.querySelector('.prog-card span[style*="color:#047857;"], .prog-card span[style*="font-size:13px"]');
+    if (pctSpan) {
+      const pct = Math.round((checkedCount / 5) * 100);
+      pctSpan.textContent = `${pct}%`;
+    }
+    const progBarFill = pageAula.querySelector('.prog-card div[style*="background:linear-gradient(90deg,#059669,#34D399)"], .prog-card div[style*="background:linear-gradient"]');
+    if (progBarFill) {
+      const pct = Math.round((checkedCount / 5) * 100);
+      progBarFill.style.width = `${pct}%`;
+    }
+    
+    const objectivesTitleSub = pageAula.querySelector('.prog-card p[style*="color:#6B7280;"], .prog-card p[style*="font-size:12px"]');
+    if (objectivesTitleSub) {
+      objectivesTitleSub.textContent = `${checkedCount} de 5 objetivos completados`;
+    }
+
+    const badgesContainer = pageAula.querySelector('.prog-card div[style*="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;"]');
+    if (badgesContainer) {
+      const bList = [
+        { key: 'mateClase', text: 'Ver clase de Mate' },
+        { key: 'tutoriaCompletada', text: 'Tutoría completada' },
+        { key: 'quizEnviado', text: 'Quiz enviado' },
+        { key: 'repasarFisica', text: 'Repasar Física' },
+        { key: 'agendarTutoria', text: 'Agendar tutoría' }
+      ];
+      badgesContainer.innerHTML = bList.map(item => {
+        const done = state.weeklyObjectivesChecked[item.key];
+        if (done) {
+          return `<span style="background:#ECFDF5;border:1px solid #A7F3D0;border-radius:20px;padding:4px 12px;font-size:12px;color:#047857;font-weight:500;">✅ ${item.text}</span>`;
+        } else {
+          return `<span style="background:#F9FAFB;border:1px solid #E5E7EB;border-radius:20px;padding:4px 12px;font-size:12px;color:#9CA3AF;font-weight:500;">⬜ ${item.text}</span>`;
+        }
+      }).join('');
+    }
+  }
+
+  // Update courses list progress
+  const coursesList = document.getElementById('coursesList');
+  if (coursesList) {
+    COURSES.forEach(c => {
+      if (state.courseProgress[c.name] !== undefined) {
+        c.pct = state.courseProgress[c.name];
+      }
+    });
+    renderCourses();
+  }
+
+  // Update jobs count
+  renderJobs();
+}
+
+// ─── Source: js/jobs.js ───
+
+let selectedZone = 'Todos';
+let selectedMode = 'Todos';
+
+
+function renderJobFilters() {
+  renderPillGroup('zonePills', ['Todos', 'Medellín', 'Envigado', 'Bello', 'Rionegro'], selectedZone, value => {
+    selectedZone = value;
+    renderJobs();
+  });
+  renderPillGroup('modePills', ['Todos', 'Remoto', 'Presencial'], selectedMode, value => {
+    selectedMode = value;
+    renderJobs();
+  });
+}
+
+function renderJobs() {
+  const grid = document.getElementById('jobsGrid');
+  const counter = document.getElementById('jobsCount');
+  if (!grid) return;
+  const filtered = JOBS.filter(job => {
+    const zoneMatch = selectedZone === 'Todos' || job.zone === selectedZone;
+    const modeMatch = selectedMode === 'Todos' || job.mode === selectedMode;
+    return zoneMatch && modeMatch;
+  });
+  if (counter) counter.textContent = `${filtered.length} oportunidades para tu perfil`;
+  grid.innerHTML = filtered.map(job => `
+    <div class="job-card">
+      <div class="job-emoji-wrap">${job.emoji}</div>
+      <div class="job-pay-amount">${job.pay}</div>
+      <div class="job-pay-period">${job.period}</div>
+      <div class="job-title">${job.title}</div>
+      <div class="job-company">${job.company} · ${job.mode}</div>
+      <div class="job-value-prop">${job.why}</div>
+      <div class="tags"><span class="tag tag-g">${job.zone}</span><span class="tag tag-b">${job.mode}</span></div>
+      <div class="job-footer">
+        <div class="diff-dots">${Array.from({ length: 3 }, (_, i) => `<span class="diff-dot ${i < job.diff ? 'dd-on' : 'dd-off'}"></span>`).join('')}</div>
+        <span class="diff-label">${job.hours}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ─── Source: js/vocational.js ───
 
 function renderVocOptions() {
   QUESTIONS.forEach((question, index) => {
@@ -281,7 +703,7 @@ function resetVoc() {
 }
 
 function vocCalc() {
-  const score = {tech:0,creative:0,entrepreneur:0,analyst:0};
+  const score = { tech: 0, creative: 0, entrepreneur: 0, analyst: 0 };
   for (let i = 1; i <= 7; i += 1) {
     const selected = document.querySelector(`#q${i}opts .voc-opt.selected`);
     if (selected) {
@@ -289,132 +711,53 @@ function vocCalc() {
       if (profile) score[profile] += 1;
     }
   }
-  const profileKey = Object.entries(score).sort((a,b) => b[1] - a[1])[0][0] || 'tech';
+  const profileKey = Object.entries(score).sort((a, b) => b[1] - a[1])[0][0] || 'tech';
   const profile = PROFILES[profileKey] || PROFILES.tech;
+  
   const icon = document.getElementById('vocResIcon');
   const title = document.getElementById('vocResTitle');
   const sub = document.getElementById('vocResSub');
   const traits = document.getElementById('vocTraits');
   const recs = document.getElementById('vocRecsList');
+  
   if (icon) icon.textContent = profile.icon;
   if (title) title.textContent = profile.title;
   if (sub) sub.textContent = profile.sub;
   if (traits) {
     traits.innerHTML = profile.traits.map(trait => `
-      <div class="voc-trait"><div class="voc-trait-name">${trait.n}</div><div class="voc-trait-bar"><div class="voc-trait-fill" style="width:${trait.v}%;background:${trait.c}"></div></div></div>
+      <div class="voc-trait">
+        <div class="voc-trait-name">${trait.n}</div>
+        <div class="voc-trait-bar">
+          <div class="voc-trait-fill" style="width:${trait.v}%;background:${trait.c}"></div>
+        </div>
+      </div>
     `).join('');
   }
   if (recs) {
     recs.innerHTML = profile.recs.map(item => `
-      <div class="voc-rec-item"><div class="voc-rec-emoji">${item.e}</div><div class="voc-rec-body"><strong>${item.t}</strong><span>${item.d}</span></div></div>
+      <div class="voc-rec-item">
+        <div class="voc-rec-emoji">${item.e}</div>
+        <div class="voc-rec-body"><strong>${item.t}</strong><span>${item.d}</span></div>
+      </div>
     `).join('');
   }
+  
+  // Save profile to state
+  const isFirstTime = !state.vocProfile;
+  state.vocProfile = profileKey;
+  
+  if (isFirstTime) {
+    addXP(25, 'Completaste el test vocacional');
+  } else {
+    saveState();
+  }
+  
   showStep(8);
 }
 
-function showToast(message) {
-  const toast = document.getElementById('toast');
-  if (!toast) return;
-  toast.textContent = message;
-  toast.classList.add('show');
-  setTimeout(() => toast.classList.remove('show'), 2200);
-}
-
-function renderJobFilters() {
-  renderPillGroup('zonePills', ['Todos','Medellín','Envigado','Bello','Rionegro'], selectedZone, value => {
-    selectedZone = value;
-    renderJobs();
-  });
-  renderPillGroup('modePills', ['Todos','Remoto','Presencial'], selectedMode, value => {
-    selectedMode = value;
-    renderJobs();
-  });
-}
-
-function renderPillGroup(containerId, items, activeValue, onClick) {
-  const container = document.getElementById(containerId);
-  if (!container) return;
-  container.innerHTML = items.map(item => `<button type="button" class="pill${item === activeValue ? ' active' : ''}" data-value="${item}">${item}</button>`).join('');
-  container.querySelectorAll('button').forEach(btn => btn.addEventListener('click', () => {
-    onClick(btn.dataset.value);
-    renderPillGroup(containerId, items, btn.dataset.value, onClick);
-  }));
-}
-
-function renderJobs() {
-  const grid = document.getElementById('jobsGrid');
-  const counter = document.getElementById('jobsCount');
-  if (!grid) return;
-  const filtered = JOBS.filter(job => {
-    const zoneMatch = selectedZone === 'Todos' || job.zone === selectedZone;
-    const modeMatch = selectedMode === 'Todos' || job.mode === selectedMode;
-    return zoneMatch && modeMatch;
-  });
-  if (counter) counter.textContent = `${filtered.length} oportunidades para tu perfil`;
-  grid.innerHTML = filtered.map(job => `
-    <div class="job-card">
-      <div class="job-emoji-wrap">${job.emoji}</div>
-      <div class="job-pay-amount">${job.pay}</div>
-      <div class="job-pay-period">${job.period}</div>
-      <div class="job-title">${job.title}</div>
-      <div class="job-company">${job.company} · ${job.mode}</div>
-      <div class="job-value-prop">${job.why}</div>
-      <div class="tags"><span class="tag tag-g">${job.zone}</span><span class="tag tag-b">${job.mode}</span></div>
-      <div class="job-footer"><div class="diff-dots">${Array.from({ length: 3 }, (_, i) => `<span class="diff-dot ${i < job.diff ? 'dd-on' : 'dd-off'}"></span>`).join('')}</div><span class="diff-label">${job.hours}</span></div>
-    </div>
-  `).join('');
-}
-
-function renderOpps() {
-  const grid = document.getElementById('oppsGrid');
-  if (!grid) return;
-  grid.innerHTML = OPPS.map(opp => `
-    <div class="opp-card ${opp.cls}">
-      <div class="opp-emoji">${opp.emoji}</div>
-      <div class="opp-type">${opp.type}</div>
-      <div class="opp-name">${opp.name}</div>
-      <div class="opp-detail">${opp.detail}</div>
-    </div>
-  `).join('');
-}
-
-function renderCourses() {
-  const list = document.getElementById('coursesList');
-  if (!list) return;
-  list.innerHTML = COURSES.map(course => `
-    <div class="course-item" style="background:${course.bg}">
-      <div class="course-thumb">${course.emoji}</div>
-      <div class="course-info">
-        <div class="course-name">${course.name}</div>
-        <div class="course-org">${course.org}</div>
-        <div class="course-why">${course.why}</div>
-      </div>
-      <div class="course-right">
-        <div class="course-pct">${course.pct}%</div>
-        <div class="course-bar-track"><div class="course-bar-fill" style="width:${course.pct}%;"></div></div>
-        <span class="course-platform-badge ${course.badge}">${course.plat}</span>
-      </div>
-    </div>
-  `).join('');
-}
-
-function renderActivities() {
-  const list = document.getElementById('activityList');
-  if (!list) return;
-  list.innerHTML = ACTIVITIES.map(activity => `
-    <div class="act-item">
-      <span class="act-dot" style="background:${activity.dot}"></span>
-      <div>
-        <div class="act-text">${activity.text}</div>
-        <div class="act-time">${activity.time}</div>
-      </div>
-      <div class="act-pts">${activity.pts}</div>
-    </div>
-  `).join('');
-}
-
+// ─── Source: js/aula.js ───
 function aulaTab(tab) {
-  ['clases','tutorias','materias'].forEach(t => {
+  ['clases', 'tutorias', 'materias'].forEach(t => {
     const section = document.getElementById('aula-' + t);
     if (section) section.style.display = t === tab ? 'block' : 'none';
     const btn = document.getElementById('tab-' + t);
@@ -474,6 +817,230 @@ function filtrarMateriaTab(materia) {
     const btn = Array.from(document.querySelectorAll('[onclick*="filtrarClase"]')).find(b => b.textContent.trim() === materia);
     if (btn) filtrarClase(btn, materia);
   }, 50);
+}
+
+// ─── Source: js/interests.js ───
+
+const ALL_INTERESTS = [
+  { icon: '💻', label: 'Programación' },
+  { icon: '🎨', label: 'Diseño' },
+  { icon: '📊', label: 'Datos y Analytics' },
+  { icon: '🤖', label: 'Inteligencia Artificial' },
+  { icon: '📣', label: 'Marketing Digital' },
+  { icon: '🎬', label: 'Contenido y Video' },
+  { icon: '🚀', label: 'Emprendimiento' },
+  { icon: '🌍', label: 'Impacto Social' },
+  { icon: '💰', label: 'Finanzas' },
+  { icon: '🤝', label: 'Voluntariado' },
+  { icon: '🎓', label: 'Becas y Estudios' },
+  { icon: '🎮', label: 'Videojuegos y Gaming' },
+];
+
+function openInterestsModal() {
+  const modal = document.getElementById('modal-interests');
+  if (!modal) return;
+  populateInterestsGrid();
+  modal.style.display = 'flex';
+}
+
+function closeInterestsModal(event) {
+  const modal = document.getElementById('modal-interests');
+  if (!modal) return;
+  // Close only if clicking overlay background or close button
+  if (!event || event.target === modal || event.currentTarget.classList.contains('modal-close-btn')) {
+    modal.style.display = 'none';
+  }
+}
+
+function saveInterests() {
+  const selected = Array.from(document.querySelectorAll('#interestsGrid .interest-chip.selected'))
+    .map(chip => chip.dataset.label);
+
+  if (selected.length === 0) {
+    showToast('Selecciona al menos un interés 👆');
+    return;
+  }
+
+  const isFirstTime = state.userInterests.length === 0;
+  state.userInterests = selected;
+
+  if (isFirstTime) {
+    // Award +40% profile completion for first time
+    const oldCompletion = state.profileCompletion;
+    state.profileCompletion = Math.min(100, oldCompletion + 40);
+    showToast(`¡Intereses guardados! +40% perfil 🎉`);
+  } else {
+    showToast(`¡Intereses actualizados! (${selected.length} seleccionados)`);
+  }
+
+  saveState();
+  closeInterestsModal({ target: null });
+}
+
+function populateInterestsGrid() {
+  const grid = document.getElementById('interestsGrid');
+  if (!grid) return;
+  grid.innerHTML = ALL_INTERESTS.map(item => {
+    const isSelected = state.userInterests.includes(item.label);
+    return `
+      <div
+        class="interest-chip${isSelected ? ' selected' : ''}"
+        data-label="${item.label}"
+        onclick="this.classList.toggle('selected')"
+        style="display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;
+               border:1.5px solid ${isSelected ? '#059669' : '#E5E7EB'};
+               background:${isSelected ? '#ECFDF5' : '#fff'};
+               color:${isSelected ? '#047857' : '#374151'};
+               font-size:13px;font-weight:${isSelected ? '600' : '500'};
+               cursor:pointer;transition:all .15s;font-family:'DM Sans',sans-serif;"
+        onmouseover="this.style.borderColor='#059669';this.style.background='#F0FDF4'"
+        onmouseout="this.style.borderColor=this.classList.contains('selected')?'#059669':'#E5E7EB';
+                    this.style.background=this.classList.contains('selected')?'#ECFDF5':'#fff'">
+        <span>${item.icon}</span>
+        <span>${item.label}</span>
+      </div>
+    `;
+  }).join('');
+}
+
+// ─── Source: js/main.js ───
+
+// ── Wire up state callbacks (avoid circular imports) ──────────────────────
+registerStateChangeListener(updateUIFromState);
+registerShowToast(showToast);
+
+// ── Expose functions needed by inline HTML event handlers ─────────────────
+window.toggleTheme        = toggleTheme;
+window.showToast          = showToast;
+window.addXP              = addXP;
+
+// Vocational test
+window.selectOption       = selectOption;
+window.vocNext            = vocNext;
+window.vocBack            = vocBack;
+window.vocCalc            = vocCalc;
+window.openVoc            = openVoc;
+window.closeVoc           = closeVoc;
+window.retakeVoc          = retakeVoc;
+
+// Aula Extendida
+window.aulaTab            = aulaTab;
+window.filtrarClase       = filtrarClase;
+window.verClase           = verClase;
+window.cerrarModal        = cerrarModal;
+window.filtrarMateriaTab  = filtrarMateriaTab;
+
+// Modals
+window.openInterestsModal  = openInterestsModal;
+window.closeInterestsModal = closeInterestsModal;
+window.saveInterests       = saveInterests;
+window.closeGeneralModal   = closeGeneralModal;
+
+// ── General modal ─────────────────────────────────────────────────────────
+function closeGeneralModal(event) {
+  const modal = document.getElementById('modal-general');
+  if (!modal) return;
+  if (!event || event.target === modal || event.currentTarget.classList.contains('modal-close-btn')) {
+    modal.style.display = 'none';
+  }
+}
+
+// ── Nav rendering ─────────────────────────────────────────────────────────
+function initNav() {
+  const desktopNav = document.getElementById('desktopNav');
+  const mobileNav  = document.getElementById('mobileNav');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  const desktopHtml = NAV_ITEMS.map(item =>
+    `<button class="nav-btn" data-href="${item.href}">${item.icon} ${item.label}</button>`
+  ).join('');
+
+  const mobileHtml = NAV_ITEMS.map(item =>
+    `<button class="mob-nav-btn" data-href="${item.href}"><span class="mob-nav-icon">${item.icon}</span>${item.label}</button>`
+  ).join('');
+
+  if (desktopNav) {
+    desktopNav.innerHTML = desktopHtml;
+    desktopNav.querySelectorAll('button').forEach(btn =>
+      btn.addEventListener('click', () => window.location.href = btn.dataset.href)
+    );
+  }
+  if (mobileMenu) {
+    mobileMenu.innerHTML = desktopHtml;
+    mobileMenu.querySelectorAll('button').forEach(btn =>
+      btn.addEventListener('click', () => window.location.href = btn.dataset.href)
+    );
+  }
+  if (mobileNav) {
+    mobileNav.innerHTML = mobileHtml;
+    mobileNav.querySelectorAll('button').forEach(btn =>
+      btn.addEventListener('click', () => window.location.href = btn.dataset.href)
+    );
+  }
+}
+
+function setActiveNav() {
+  const current = window.location.pathname.split('/').pop() || 'pag.html';
+  document.querySelectorAll('.nav-btn, .mob-nav-btn').forEach(btn => {
+    if (btn.dataset.href && btn.dataset.href.endsWith(current)) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+}
+
+function initBurger() {
+  const burgerBtn  = document.getElementById('burgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (burgerBtn && mobileMenu) {
+    burgerBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  }
+}
+
+// ── Page-specific init ────────────────────────────────────────────────────
+function initPage() {
+  // Page 1 (pag.html)
+  if (document.getElementById('quoteText')) {
+    renderQuote();
+    renderDate();
+    renderTimer();
+    renderJobFilters();
+    renderJobs();
+    renderOpps();
+    renderCourses();
+    renderActivities();
+    renderVocOptions();
+
+    // Wire onboard-cta to interests modal
+    const onboardCta = document.querySelector('.onboard-cta');
+    if (onboardCta && !onboardCta.getAttribute('onclick')) {
+      onboardCta.addEventListener('click', openInterestsModal);
+    }
+  }
+
+  // Page 2 (pag2.html)
+  if (document.getElementById('aula-tabs')) {
+    aulaTab('clases');
+  }
+
+  // Clase modal backdrop click
+  const modalClase = document.getElementById('modal-clase');
+  if (modalClase) {
+    modalClase.addEventListener('click', function (e) {
+      if (e.target === this) cerrarModal();
+    });
+  }
+}
+
+// ── App entry point ───────────────────────────────────────────────────────
+function initApp() {
+  loadState();
+  initNav();
+  initBurger();
+  setActiveNav();
+  initPage();
+  updateUIFromState();
 }
 
 window.addEventListener('DOMContentLoaded', initApp);

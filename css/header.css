@@ -1,0 +1,203 @@
+/* ==========================================================================
+   HEADER, NAVEGACIÓN Y MENÚ MÓVIL
+   ========================================================================== */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #fff;
+    border-bottom: 1px solid var(--gray-100);
+    box-shadow: var(--shadow-sm)
+}
+
+.header-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    gap: 14px
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    flex-shrink: 0
+}
+
+.logo-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--brand);
+    border-radius: var(--r-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.logo-icon svg {
+    width: 17px;
+    height: 17px;
+    stroke: #fff;
+    fill: none;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round
+}
+
+.logo-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    color: var(--gray-900)
+}
+
+.desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin-left: 12px
+}
+
+.nav-btn {
+    padding: 6px 11px;
+    border-radius: var(--r-sm);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gray-500);
+    transition: all .15s
+}
+
+.nav-btn:hover {
+    color: var(--gray-900);
+    background: var(--gray-50)
+}
+
+.nav-btn.active {
+    background: var(--em50);
+    color: var(--em700)
+}
+
+.header-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 9px
+}
+
+.loc-chip {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 11px;
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--r-sm);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--gray-700)
+}
+
+.loc-chip svg {
+    width: 12px;
+    height: 12px;
+    stroke: var(--em600);
+    fill: none;
+    stroke-width: 2.5;
+    stroke-linecap: round
+}
+
+.xp-chip {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 11px;
+    background: var(--em50);
+    border: 1px solid var(--em200);
+    border-radius: var(--r-sm);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--em700);
+    font-family: 'Syne', sans-serif
+}
+
+.xp-chip em {
+    font-weight: 400;
+    font-style: normal;
+    color: var(--em600)
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    background: var(--brand);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    font-family: 'Syne', sans-serif;
+    flex-shrink: 0
+}
+
+.burger {
+    padding: 6px;
+    border-radius: var(--r-sm);
+    display: none
+}
+
+.burger:hover {
+    background: var(--gray-100)
+}
+
+.burger svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--gray-600);
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round
+}
+
+.mob-menu {
+    display: none;
+    flex-direction: column;
+    gap: 3px;
+    padding: 10px 16px;
+    border-top: 1px solid var(--gray-100);
+    background: #fff
+}
+
+.mob-menu.open {
+    display: flex
+}
+
+.mob-menu .nav-btn {
+    text-align: left;
+    padding: 8px 11px
+}
+
+.theme-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--r-sm);
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 15px;
+    flex-shrink: 0;
+}
+
+.theme-toggle-btn:hover {
+    background: var(--gray-100);
+    border-color: var(--brand);
+}

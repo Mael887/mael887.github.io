@@ -1,17 +1,29 @@
-<!-- =============================================
-  PÁGINA: AULA EXTENDIDA
-  Agregar este bloque dentro del <div class="main"> de la página de Aula
-  También necesitas agregar el nav-btn y la lógica de navegación indicada abajo
-============================================= -->
-
-<!-- 1. NAV BUTTON (agregar en .desktop-nav junto a los otros) -->
-<!--
-<button class="nav-btn" data-page="aula" onclick="showPage('aula')">Aula Extendida</button>
--->
-
-<!-- 2. PÁGINA COMPLETA -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aula Extendida | Próximo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <a href="pag.html" class="logo" style="text-decoration:none;color:inherit;display:flex;align-items:center;gap:9px;">
+      <span class="logo-icon">P</span>
+      <span class="logo-name">Próximo</span>
+    </a>
+    <div class="desktop-nav" id="desktopNav"></div>
+    <button class="burger" id="burgerBtn" aria-label="Abrir menú">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <div id="mobileMenu" class="mob-menu"></div>
+  </div>
+</header>
+<main class="main">
 <div class="page" id="page-aula">
-  <div class="main">
 
     <!-- HERO BANNER -->
     <div style="background:linear-gradient(135deg,#064E3B 0%,#0F7A5A 55%,#059669 100%);border-radius:20px;padding:36px 32px;color:#fff;display:flex;flex-direction:column;gap:20px;position:relative;overflow:hidden;">
@@ -422,77 +434,9 @@
   </div>
 </div>
 
-<!-- =============================================
-  JAVASCRIPT
-  Agregar dentro de tu <script> existente
-============================================= -->
-<script>
-function aulaTab(tab) {
-  ['clases','tutorias','materias'].forEach(t => {
-    document.getElementById('aula-' + t).style.display = t === tab ? 'block' : 'none';
-    const btn = document.getElementById('tab-' + t);
-    if(btn){
-      btn.style.background = t === tab ? '#fff' : 'transparent';
-      btn.style.color = t === tab ? '#047857' : '#6B7280';
-      btn.style.boxShadow = t === tab ? '0 1px 4px rgba(0,0,0,.08)' : 'none';
-    }
-  });
-}
-
-function filtrarClase(btn, materia) {
-  // resetear botones
-  btn.parentElement.querySelectorAll('button').forEach(b => {
-    b.style.background = '#fff';
-    b.style.borderColor = '#E5E7EB';
-    b.style.color = '#374151';
-    b.style.borderWidth = '1px';
-    b.style.fontWeight = '500';
-  });
-  btn.style.background = '#ECFDF5';
-  btn.style.borderColor = '#059669';
-  btn.style.color = '#047857';
-  btn.style.borderWidth = '1.5px';
-  btn.style.fontWeight = '600';
-
-  document.querySelectorAll('#clases-grid .clase-card').forEach(card => {
-    if(materia === 'Todas' || card.dataset.materia === materia) {
-      card.style.display = 'block';
-    } else {
-      card.style.display = 'none';
-    }
-  });
-}
-
-function verClase(btn) {
-  const card = btn.closest('.clase-card');
-  const titulo = card.querySelector('h3').textContent;
-  document.getElementById('modal-titulo').textContent = titulo;
-  const modal = document.getElementById('modal-clase');
-  modal.style.display = 'flex';
-  // animar barra de progreso
-  setTimeout(() => {
-    document.getElementById('video-progress').style.width = '35%';
-  }, 300);
-}
-
-function cerrarModal() {
-  document.getElementById('modal-clase').style.display = 'none';
-  document.getElementById('video-progress').style.width = '0%';
-}
-
-function filtrarMateriaTab(materia) {
-  aulaTab('clases');
-  // pequeño delay para que el tab cargue
-  setTimeout(() => {
-    const btn = Array.from(document.querySelectorAll('#clases-grid')).length > 0
-      ? Array.from(document.querySelectorAll('[onclick*="filtrarClase"]')).find(b => b.textContent.trim() === materia)
-      : null;
-    if(btn) filtrarClase(btn, materia);
-  }, 50);
-}
-
-// cerrar modal al hacer click fuera
-document.getElementById('modal-clase').addEventListener('click', function(e) {
-  if(e.target === this) cerrarModal();
-});
-</script>
+</main>
+<nav class="mobile-nav"><div class="mob-nav-items" id="mobileNav"></div></nav>
+<div class="mob-spacer"></div>
+<script src="app.js" defer></script>
+</body>
+</html>

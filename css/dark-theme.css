@@ -1,0 +1,200 @@
+/* ==========================================================================
+   MODO NOCHE — DARK THEME OVERRIDES
+   ========================================================================== */
+
+.dark-theme {
+    --gray-50: #0f172a;
+    --gray-100: #1e293b;
+    --gray-200: #334155;
+    --gray-400: #475569;
+    --gray-500: #94a3b8;
+    --gray-700: #cbd5e1;
+    --gray-900: #f8fafc;
+
+    background-color: var(--gray-50);
+    color: var(--gray-900);
+}
+
+body.dark-theme {
+    background: var(--gray-50);
+    color: var(--gray-900);
+}
+
+.dark-theme .header {
+    background: #1e293b;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.dark-theme .welcome,
+.dark-theme .story-card,
+.dark-theme .stat-card,
+.dark-theme .job-card,
+.dark-theme .opp-card,
+.dark-theme .prog-card,
+.dark-theme .activity-card,
+.dark-theme .map-card,
+.dark-theme .course-item,
+.dark-theme .voc-box,
+.dark-theme .modal-box {
+    background: #1e293b;
+    border-color: var(--gray-200);
+    color: var(--gray-900);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.dark-theme .desktop-nav .nav-btn:hover {
+    background: var(--gray-200);
+    color: var(--gray-900);
+}
+
+.dark-theme .loc-chip,
+.dark-theme .xp-chip {
+    background: var(--gray-100);
+    border-color: var(--gray-200);
+}
+
+.dark-theme .burger:hover {
+    background: var(--gray-200);
+}
+
+.dark-theme .mob-menu {
+    background: #1e293b;
+    border-top-color: var(--gray-200);
+}
+
+.dark-theme .theme-toggle-btn {
+    background: var(--gray-100);
+    border-color: var(--gray-200);
+}
+
+.dark-theme .quote-text {
+    color: var(--gray-700);
+}
+
+.dark-theme .welcome-purpose,
+.dark-theme .welcome-greeting,
+.dark-theme .sec-sub,
+.dark-theme .job-company,
+.dark-theme .opp-detail,
+.dark-theme .level-pts-lbl,
+.dark-theme .pts-big-lbl,
+.dark-theme .prog-label-row,
+.dark-theme .ach-name,
+.dark-theme .act-time,
+.dark-theme .legend-item,
+.dark-theme .map-badge,
+.dark-theme .course-org {
+    color: var(--gray-500) !important;
+}
+
+.dark-theme .job-title,
+.dark-theme .opp-name,
+.dark-theme .level-name,
+.dark-theme .activity-title,
+.dark-theme .course-name,
+.dark-theme .voc-opt-body strong,
+.dark-theme .voc-question,
+.dark-theme .voc-result-title,
+.dark-theme .voc-recs-title,
+.dark-theme .voc-rec-body strong,
+.dark-theme .logo-name {
+    color: var(--gray-900) !important;
+}
+
+.dark-theme .pill {
+    background: var(--gray-100);
+    border-color: var(--gray-200);
+    color: var(--gray-500);
+}
+
+.dark-theme .pill:hover {
+    border-color: var(--brand);
+    color: var(--gray-900);
+}
+
+.dark-theme .pill.active {
+    background: var(--brand);
+    color: #fff;
+    border-color: var(--brand);
+}
+
+.dark-theme .job-card:hover {
+    border-color: var(--brand);
+}
+
+.dark-theme .job-pay-period,
+.dark-theme .diff-label {
+    color: var(--gray-400);
+}
+
+.dark-theme .job-value-prop {
+    color: var(--gray-700);
+    border-left-color: var(--brand-light);
+}
+
+.dark-theme .job-emoji-wrap,
+.dark-theme .voc-trait {
+    background: var(--gray-100);
+    border-color: var(--gray-200);
+}
+
+.dark-theme .voc-opt {
+    background: var(--gray-100);
+    border-color: var(--gray-200);
+    color: var(--gray-700);
+}
+
+.dark-theme .voc-opt:hover,
+.dark-theme .voc-opt.selected {
+    background: rgba(15, 122, 90, 0.15);
+    border-color: var(--brand);
+}
+
+.dark-theme .voc-back {
+    background: var(--gray-100);
+    border-color: var(--gray-200);
+    color: var(--gray-700);
+}
+
+.dark-theme .voc-back:hover {
+    background: var(--gray-200);
+}
+
+.dark-theme .voc-rec-item {
+    background: var(--gray-100);
+    border-color: var(--gray-200);
+}
+
+.dark-theme .voc-rec-body span {
+    color: var(--gray-500);
+}
+
+.dark-theme .mobile-nav {
+    background: #1e293b;
+    border-top-color: var(--gray-200);
+}
+
+.dark-theme .mob-nav-btn {
+    color: var(--gray-400);
+}
+
+.dark-theme .mob-nav-btn.active {
+    color: var(--brand);
+}
+
+.dark-theme .form-label {
+    color: var(--gray-900);
+}
+
+.dark-theme .form-input,
+.dark-theme .form-textarea,
+.dark-theme .form-select {
+    background: var(--gray-100);
+    border-color: var(--gray-200);
+    color: var(--gray-900);
+}
+
+.dark-theme .highlight-pill {
+    background: rgba(15, 122, 90, 0.2);
+    color: #34d399;
+}
