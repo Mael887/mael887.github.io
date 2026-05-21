@@ -1,7 +1,7 @@
 
 // ─── Source: js/data.js ───
 const NAV_ITEMS = [
-  { label: 'Inicio', href: 'pag.html', icon: '🏠' },
+  { label: 'Inicio', href: 'index.html', icon: '🏠' },
   { label: 'Aula Extendida', href: 'pag2.html', icon: '📚' }
 ];
 
@@ -994,7 +994,7 @@ function initNav() {
 }
 
 function setActiveNav() {
-  const current = window.location.pathname.split('/').pop() || 'pag.html';
+  const current = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.nav-btn, .mob-nav-btn').forEach(btn => {
     if (btn.dataset.href && btn.dataset.href.endsWith(current)) {
       btn.classList.add('active');
@@ -1014,7 +1014,7 @@ function initBurger() {
 
 // ── Page-specific init ────────────────────────────────────────────────────
 function initPage() {
-  // Page 1 (pag.html)
+  // Page 1 (index.html)
   if (document.getElementById('quoteText')) {
     renderQuote();
     renderDate();

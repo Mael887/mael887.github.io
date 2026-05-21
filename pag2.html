@@ -1,442 +1,653 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Aula Extendida | Próximo</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="styles.css"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aula Extendida | Próximo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-<header class="header">
-  <div class="header-inner">
-    <a href="pag.html" class="logo" style="text-decoration:none;color:inherit;display:flex;align-items:center;gap:9px;">
-      <span class="logo-icon">P</span>
-      <span class="logo-name">Próximo</span>
-    </a>
-    <div class="desktop-nav" id="desktopNav"></div>
-    <button class="burger" id="burgerBtn" aria-label="Abrir menú">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-    </button>
-    <div id="mobileMenu" class="mob-menu"></div>
-  </div>
-</header>
-<main class="main">
-<div class="page" id="page-aula">
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo"
+        style="text-decoration:none;color:inherit;display:flex;align-items:center;gap:9px;">
+        <span class="logo-icon">P</span>
+        <span class="logo-name">Próximo</span>
+      </a>
+      <div class="desktop-nav" id="desktopNav"></div>
+      <button class="burger" id="burgerBtn" aria-label="Abrir menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round">
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
+      <div id="mobileMenu" class="mob-menu"></div>
+    </div>
+  </header>
+  <main class="main">
+    <div class="page" id="page-aula">
 
-    <!-- HERO BANNER -->
-    <div style="background:linear-gradient(135deg,#064E3B 0%,#0F7A5A 55%,#059669 100%);border-radius:20px;padding:36px 32px;color:#fff;display:flex;flex-direction:column;gap:20px;position:relative;overflow:hidden;">
-      <!-- decoración fondo -->
-      <div style="position:absolute;top:-40px;right:-40px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.05);pointer-events:none;"></div>
-      <div style="position:absolute;bottom:-60px;right:80px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.04);pointer-events:none;"></div>
-
-      <div style="display:flex;align-items:center;gap:12px;position:relative">
-        <div style="width:48px;height:48px;background:rgba(255,255,255,.15);border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <svg width="26" height="26" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      <!-- HERO BANNER -->
+      <div
+        style="background:linear-gradient(135deg,#064E3B 0%,#0F7A5A 55%,#059669 100%);border-radius:20px;padding:36px 32px;color:#fff;display:flex;flex-direction:column;gap:20px;position:relative;overflow:hidden;">
+        <!-- decoración fondo -->
+        <div
+          style="position:absolute;top:-40px;right:-40px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.05);pointer-events:none;">
         </div>
-        <div>
-          <p style="font-size:12px;opacity:.7;margin-bottom:2px;letter-spacing:.05em;text-transform:uppercase;font-weight:500;">Módulo</p>
-          <h1 style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(20px,3vw,28px);line-height:1.1;">Aula Extendida</h1>
+        <div
+          style="position:absolute;bottom:-60px;right:80px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.04);pointer-events:none;">
+        </div>
+
+        <div style="display:flex;align-items:center;gap:12px;position:relative">
+          <div
+            style="width:48px;height:48px;background:rgba(255,255,255,.15);border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="26" height="26" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+            </svg>
+          </div>
+          <div>
+            <p
+              style="font-size:12px;opacity:.7;margin-bottom:2px;letter-spacing:.05em;text-transform:uppercase;font-weight:500;">
+              Módulo</p>
+            <h1 style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(20px,3vw,28px);line-height:1.1;">
+              Aula Extendida</h1>
+          </div>
+        </div>
+
+        <p style="font-size:15px;opacity:.88;max-width:600px;line-height:1.6;position:relative;">
+          Aprende a tu propio ritmo. Clases grabadas, tutorías entre pares y refuerzo de temas en cualquier momento del
+          día. El conocimiento no espera horarios.
+        </p>
+
+        <!-- métricas rápidas -->
+        <div style="display:flex;flex-wrap:wrap;gap:12px;position:relative;">
+          <div
+            style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px 18px;min-width:110px;">
+            <p style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;margin-bottom:2px;">48</p>
+            <p style="font-size:12px;opacity:.8;">Clases grabadas</p>
+          </div>
+          <div
+            style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px 18px;min-width:110px;">
+            <p style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;margin-bottom:2px;">12</p>
+            <p style="font-size:12px;opacity:.8;">Tutores activos</p>
+          </div>
+          <div
+            style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px 18px;min-width:110px;">
+            <p style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;margin-bottom:2px;">+240</p>
+            <p style="font-size:12px;opacity:.8;">Estudiantes activos</p>
+          </div>
+          <div
+            style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px 18px;min-width:110px;">
+            <p style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;margin-bottom:2px;">🏆 +50 XP</p>
+            <p style="font-size:12px;opacity:.8;">Por cada clase</p>
+          </div>
         </div>
       </div>
 
-      <p style="font-size:15px;opacity:.88;max-width:600px;line-height:1.6;position:relative;">
-        Aprende a tu propio ritmo. Clases grabadas, tutorías entre pares y refuerzo de temas en cualquier momento del día. El conocimiento no espera horarios.
-      </p>
-
-      <!-- métricas rápidas -->
-      <div style="display:flex;flex-wrap:wrap;gap:12px;position:relative;">
-        <div style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px 18px;min-width:110px;">
-          <p style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;margin-bottom:2px;">48</p>
-          <p style="font-size:12px;opacity:.8;">Clases grabadas</p>
+      <!-- BARRA DE PROGRESO PERSONAL -->
+      <div style="background:#fff;border:1px solid #E5E7EB;border-radius:16px;padding:20px 24px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+          <div>
+            <p style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#111827;">Tu progreso esta
+              semana</p>
+            <p style="font-size:12px;color:#6B7280;margin-top:2px;">3 de 5 objetivos completados</p>
+          </div>
+          <div style="background:#ECFDF5;border:1px solid #A7F3D0;border-radius:20px;padding:4px 12px;">
+            <span style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#047857;">60%</span>
+          </div>
         </div>
-        <div style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px 18px;min-width:110px;">
-          <p style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;margin-bottom:2px;">12</p>
-          <p style="font-size:12px;opacity:.8;">Tutores activos</p>
+        <div style="background:#F3F4F6;border-radius:999px;height:10px;overflow:hidden;">
+          <div
+            style="width:60%;height:100%;background:linear-gradient(90deg,#059669,#34D399);border-radius:999px;transition:width .6s ease;">
+          </div>
         </div>
-        <div style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px 18px;min-width:110px;">
-          <p style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;margin-bottom:2px;">+240</p>
-          <p style="font-size:12px;opacity:.8;">Estudiantes activos</p>
-        </div>
-        <div style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px 18px;min-width:110px;">
-          <p style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;margin-bottom:2px;">🏆 +50 XP</p>
-          <p style="font-size:12px;opacity:.8;">Por cada clase</p>
+        <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;">
+          <span
+            style="background:#ECFDF5;border:1px solid #A7F3D0;border-radius:20px;padding:4px 12px;font-size:12px;color:#047857;font-weight:500;">✅
+            Ver clase de Mate</span>
+          <span
+            style="background:#ECFDF5;border:1px solid #A7F3D0;border-radius:20px;padding:4px 12px;font-size:12px;color:#047857;font-weight:500;">✅
+            Tutoría completada</span>
+          <span
+            style="background:#ECFDF5;border:1px solid #A7F3D0;border-radius:20px;padding:4px 12px;font-size:12px;color:#047857;font-weight:500;">✅
+            Quiz enviado</span>
+          <span
+            style="background:#F9FAFB;border:1px solid #E5E7EB;border-radius:20px;padding:4px 12px;font-size:12px;color:#9CA3AF;font-weight:500;">⬜
+            Repasar Física</span>
+          <span
+            style="background:#F9FAFB;border:1px solid #E5E7EB;border-radius:20px;padding:4px 12px;font-size:12px;color:#9CA3AF;font-weight:500;">⬜
+            Agendar tutoría</span>
         </div>
       </div>
+
+      <!-- TABS DE CONTENIDO -->
+      <div>
+        <div
+          style="display:flex;gap:4px;background:#F3F4F6;padding:4px;border-radius:12px;width:fit-content;margin-bottom:20px;"
+          id="aula-tabs">
+          <button onclick="aulaTab('clases')" id="tab-clases"
+            style="padding:8px 18px;border-radius:9px;font-size:13px;font-weight:600;border:none;background:#fff;color:#047857;box-shadow:0 1px 4px rgba(0,0,0,.08);cursor:pointer;font-family:'DM Sans',sans-serif;">📹
+            Clases grabadas</button>
+          <button onclick="aulaTab('tutorias')" id="tab-tutorias"
+            style="padding:8px 18px;border-radius:9px;font-size:13px;font-weight:600;border:none;background:transparent;color:#6B7280;cursor:pointer;font-family:'DM Sans',sans-serif;">🤝
+            Tutorías</button>
+          <button onclick="aulaTab('materias')" id="tab-materias"
+            style="padding:8px 18px;border-radius:9px;font-size:13px;font-weight:600;border:none;background:transparent;color:#6B7280;cursor:pointer;font-family:'DM Sans',sans-serif;">📚
+            Materias</button>
+        </div>
+
+        <!-- TAB: CLASES GRABADAS -->
+        <div id="aula-clases">
+
+          <!-- filtros -->
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center;">
+            <span style="font-size:12px;color:#6B7280;font-weight:500;">Filtrar:</span>
+            <button onclick="filtrarClase(this,'Todas')"
+              style="padding:5px 13px;border-radius:20px;font-size:12px;font-weight:600;border:1.5px solid #059669;background:#ECFDF5;color:#047857;cursor:pointer;font-family:'DM Sans',sans-serif;">Todas</button>
+            <button onclick="filtrarClase(this,'Matemáticas')"
+              style="padding:5px 13px;border-radius:20px;font-size:12px;font-weight:500;border:1px solid #E5E7EB;background:#fff;color:#374151;cursor:pointer;font-family:'DM Sans',sans-serif;">Matemáticas</button>
+            <button onclick="filtrarClase(this,'Ciencias')"
+              style="padding:5px 13px;border-radius:20px;font-size:12px;font-weight:500;border:1px solid #E5E7EB;background:#fff;color:#374151;cursor:pointer;font-family:'DM Sans',sans-serif;">Ciencias</button>
+            <button onclick="filtrarClase(this,'Español')"
+              style="padding:5px 13px;border-radius:20px;font-size:12px;font-weight:500;border:1px solid #E5E7EB;background:#fff;color:#374151;cursor:pointer;font-family:'DM Sans',sans-serif;">Español</button>
+            <button onclick="filtrarClase(this,'Inglés')"
+              style="padding:5px 13px;border-radius:20px;font-size:12px;font-weight:500;border:1px solid #E5E7EB;background:#fff;color:#374151;cursor:pointer;font-family:'DM Sans',sans-serif;">Inglés</button>
+            <button onclick="filtrarClase(this,'Historia')"
+              style="padding:5px 13px;border-radius:20px;font-size:12px;font-weight:500;border:1px solid #E5E7EB;background:#fff;color:#374151;cursor:pointer;font-family:'DM Sans',sans-serif;">Historia</button>
+          </div>
+
+          <!-- grid de clases -->
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px;"
+            id="clases-grid">
+
+            <!-- clase card -->
+            <div class="clase-card" data-materia="Matemáticas"
+              style="background:#fff;border:1px solid #E5E7EB;border-radius:16px;overflow:hidden;transition:box-shadow .2s;">
+              <div
+                style="background:linear-gradient(135deg,#064E3B,#059669);height:120px;display:flex;align-items:center;justify-content:center;position:relative;">
+                <span style="font-size:40px;">📐</span>
+                <div
+                  style="position:absolute;top:10px;right:10px;background:rgba(0,0,0,.3);border-radius:20px;padding:3px 9px;font-size:11px;color:#fff;font-weight:600;">
+                  18 min</div>
+                <div
+                  style="position:absolute;bottom:10px;left:10px;background:#ECFDF5;border-radius:20px;padding:3px 9px;font-size:11px;color:#047857;font-weight:600;">
+                  Matemáticas</div>
+              </div>
+              <div style="padding:16px;">
+                <h3
+                  style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#111827;margin-bottom:6px;">
+                  Fracciones y decimales: de cero a profe</h3>
+                <p style="font-size:12px;color:#6B7280;margin-bottom:12px;">Entiende de una vez por qué 1/2 = 0.5. Sin
+                  vueltas.</p>
+                <div style="display:flex;align-items:center;justify-content:space-between;">
+                  <div style="display:flex;align-items:center;gap:5px;">
+                    <div
+                      style="width:22px;height:22px;background:#059669;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:9px;font-weight:700;">
+                      YL</div>
+                    <span style="font-size:11px;color:#6B7280;">Yuliana López</span>
+                  </div>
+                  <div style="display:flex;gap:6px;">
+                    <span style="font-size:11px;color:#F59E0B;font-weight:600;">★ 4.9</span>
+                    <span style="font-size:11px;color:#6B7280;">+50 XP</span>
+                  </div>
+                </div>
+                <button onclick="verClase(this)"
+                  style="margin-top:12px;width:100%;padding:9px;background:#059669;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .15s;">▶
+                  Ver clase</button>
+              </div>
+            </div>
+
+            <div class="clase-card" data-materia="Ciencias"
+              style="background:#fff;border:1px solid #E5E7EB;border-radius:16px;overflow:hidden;">
+              <div
+                style="background:linear-gradient(135deg,#1D4ED8,#3B82F6);height:120px;display:flex;align-items:center;justify-content:center;position:relative;">
+                <span style="font-size:40px;">⚗️</span>
+                <div
+                  style="position:absolute;top:10px;right:10px;background:rgba(0,0,0,.3);border-radius:20px;padding:3px 9px;font-size:11px;color:#fff;font-weight:600;">
+                  24 min</div>
+                <div
+                  style="position:absolute;bottom:10px;left:10px;background:#EFF6FF;border-radius:20px;padding:3px 9px;font-size:11px;color:#1D4ED8;font-weight:600;">
+                  Ciencias</div>
+              </div>
+              <div style="padding:16px;">
+                <h3
+                  style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#111827;margin-bottom:6px;">
+                  La célula: la historia de tu existencia</h3>
+                <p style="font-size:12px;color:#6B7280;margin-bottom:12px;">Mitocondria, núcleo, membrana. Spoiler: todo
+                  importa.</p>
+                <div style="display:flex;align-items:center;justify-content:space-between;">
+                  <div style="display:flex;align-items:center;gap:5px;">
+                    <div
+                      style="width:22px;height:22px;background:#1D4ED8;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:9px;font-weight:700;">
+                      CM</div>
+                    <span style="font-size:11px;color:#6B7280;">Carlos Múnera</span>
+                  </div>
+                  <div style="display:flex;gap:6px;">
+                    <span style="font-size:11px;color:#F59E0B;font-weight:600;">★ 4.8</span>
+                    <span style="font-size:11px;color:#6B7280;">+50 XP</span>
+                  </div>
+                </div>
+                <button onclick="verClase(this)"
+                  style="margin-top:12px;width:100%;padding:9px;background:#1D4ED8;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;">▶
+                  Ver clase</button>
+              </div>
+            </div>
+
+            <div class="clase-card" data-materia="Español"
+              style="background:#fff;border:1px solid #E5E7EB;border-radius:16px;overflow:hidden;">
+              <div
+                style="background:linear-gradient(135deg,#7C3AED,#A78BFA);height:120px;display:flex;align-items:center;justify-content:center;position:relative;">
+                <span style="font-size:40px;">✍️</span>
+                <div
+                  style="position:absolute;top:10px;right:10px;background:rgba(0,0,0,.3);border-radius:20px;padding:3px 9px;font-size:11px;color:#fff;font-weight:600;">
+                  15 min</div>
+                <div
+                  style="position:absolute;bottom:10px;left:10px;background:#F5F3FF;border-radius:20px;padding:3px 9px;font-size:11px;color:#6D28D9;font-weight:600;">
+                  Español</div>
+              </div>
+              <div style="padding:16px;">
+                <h3
+                  style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#111827;margin-bottom:6px;">
+                  Conectores: escribe sin perderte</h3>
+                <p style="font-size:12px;color:#6B7280;margin-bottom:12px;">Sin embargo, además, por lo tanto… aprende a
+                  usarlos bien.</p>
+                <div style="display:flex;align-items:center;justify-content:space-between;">
+                  <div style="display:flex;align-items:center;gap:5px;">
+                    <div
+                      style="width:22px;height:22px;background:#7C3AED;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:9px;font-weight:700;">
+                      MT</div>
+                    <span style="font-size:11px;color:#6B7280;">Mariana Torres</span>
+                  </div>
+                  <div style="display:flex;gap:6px;">
+                    <span style="font-size:11px;color:#F59E0B;font-weight:600;">★ 4.7</span>
+                    <span style="font-size:11px;color:#6B7280;">+50 XP</span>
+                  </div>
+                </div>
+                <button onclick="verClase(this)"
+                  style="margin-top:12px;width:100%;padding:9px;background:#7C3AED;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;">▶
+                  Ver clase</button>
+              </div>
+            </div>
+
+            <div class="clase-card" data-materia="Inglés"
+              style="background:#fff;border:1px solid #E5E7EB;border-radius:16px;overflow:hidden;">
+              <div
+                style="background:linear-gradient(135deg,#B45309,#F59E0B);height:120px;display:flex;align-items:center;justify-content:center;position:relative;">
+                <span style="font-size:40px;">🌍</span>
+                <div
+                  style="position:absolute;top:10px;right:10px;background:rgba(0,0,0,.3);border-radius:20px;padding:3px 9px;font-size:11px;color:#fff;font-weight:600;">
+                  20 min</div>
+                <div
+                  style="position:absolute;bottom:10px;left:10px;background:#FEF3C7;border-radius:20px;padding:3px 9px;font-size:11px;color:#B45309;font-weight:600;">
+                  Inglés</div>
+              </div>
+              <div style="padding:16px;">
+                <h3
+                  style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#111827;margin-bottom:6px;">
+                  Verbos irregulares: los 40 que debes saber</h3>
+                <p style="font-size:12px;color:#6B7280;margin-bottom:12px;">De go/went/gone a think/thought. Sin
+                  memorizar de chirona.</p>
+                <div style="display:flex;align-items:center;justify-content:space-between;">
+                  <div style="display:flex;align-items:center;gap:5px;">
+                    <div
+                      style="width:22px;height:22px;background:#B45309;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:9px;font-weight:700;">
+                      JR</div>
+                    <span style="font-size:11px;color:#6B7280;">Juan Ríos</span>
+                  </div>
+                  <div style="display:flex;gap:6px;">
+                    <span style="font-size:11px;color:#F59E0B;font-weight:600;">★ 4.9</span>
+                    <span style="font-size:11px;color:#6B7280;">+50 XP</span>
+                  </div>
+                </div>
+                <button onclick="verClase(this)"
+                  style="margin-top:12px;width:100%;padding:9px;background:#B45309;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;">▶
+                  Ver clase</button>
+              </div>
+            </div>
+
+            <div class="clase-card" data-materia="Historia"
+              style="background:#fff;border:1px solid #E5E7EB;border-radius:16px;overflow:hidden;">
+              <div
+                style="background:linear-gradient(135deg,#BE123C,#FB7185);height:120px;display:flex;align-items:center;justify-content:center;position:relative;">
+                <span style="font-size:40px;">🏛️</span>
+                <div
+                  style="position:absolute;top:10px;right:10px;background:rgba(0,0,0,.3);border-radius:20px;padding:3px 9px;font-size:11px;color:#fff;font-weight:600;">
+                  22 min</div>
+                <div
+                  style="position:absolute;bottom:10px;left:10px;background:#FFF1F2;border-radius:20px;padding:3px 9px;font-size:11px;color:#BE123C;font-weight:600;">
+                  Historia</div>
+              </div>
+              <div style="padding:16px;">
+                <h3
+                  style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#111827;margin-bottom:6px;">
+                  Colombia en el siglo XX: lo que nadie te contó</h3>
+                <p style="font-size:12px;color:#6B7280;margin-bottom:12px;">Bipartidismo, Bogotazo y más. Historia que
+                  te explica el presente.</p>
+                <div style="display:flex;align-items:center;justify-content:space-between;">
+                  <div style="display:flex;align-items:center;gap:5px;">
+                    <div
+                      style="width:22px;height:22px;background:#BE123C;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:9px;font-weight:700;">
+                      SR</div>
+                    <span style="font-size:11px;color:#6B7280;">Sandra Roldán</span>
+                  </div>
+                  <div style="display:flex;gap:6px;">
+                    <span style="font-size:11px;color:#F59E0B;font-weight:600;">★ 4.8</span>
+                    <span style="font-size:11px;color:#6B7280;">+50 XP</span>
+                  </div>
+                </div>
+                <button onclick="verClase(this)"
+                  style="margin-top:12px;width:100%;padding:9px;background:#BE123C;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;">▶
+                  Ver clase</button>
+              </div>
+            </div>
+
+            <div class="clase-card" data-materia="Matemáticas"
+              style="background:#fff;border:1px solid #E5E7EB;border-radius:16px;overflow:hidden;">
+              <div
+                style="background:linear-gradient(135deg,#064E3B,#059669);height:120px;display:flex;align-items:center;justify-content:center;position:relative;">
+                <span style="font-size:40px;">📊</span>
+                <div
+                  style="position:absolute;top:10px;right:10px;background:rgba(0,0,0,.3);border-radius:20px;padding:3px 9px;font-size:11px;color:#fff;font-weight:600;">
+                  30 min</div>
+                <div
+                  style="position:absolute;bottom:10px;left:10px;background:#ECFDF5;border-radius:20px;padding:3px 9px;font-size:11px;color:#047857;font-weight:600;">
+                  Matemáticas</div>
+              </div>
+              <div style="padding:16px;">
+                <h3
+                  style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#111827;margin-bottom:6px;">
+                  Estadística básica para el ICFES</h3>
+                <p style="font-size:12px;color:#6B7280;margin-bottom:12px;">Media, mediana, moda. Las tres que siempre
+                  salen en la prueba.</p>
+                <div style="display:flex;align-items:center;justify-content:space-between;">
+                  <div style="display:flex;align-items:center;gap:5px;">
+                    <div
+                      style="width:22px;height:22px;background:#059669;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:9px;font-weight:700;">
+                      DV</div>
+                    <span style="font-size:11px;color:#6B7280;">Daniel Vargas</span>
+                  </div>
+                  <div style="display:flex;gap:6px;">
+                    <span style="font-size:11px;color:#F59E0B;font-weight:600;">★ 5.0</span>
+                    <span style="font-size:11px;color:#6B7280;">+50 XP</span>
+                  </div>
+                </div>
+                <button onclick="verClase(this)"
+                  style="margin-top:12px;width:100%;padding:9px;background:#059669;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;">▶
+                  Ver clase</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- TAB: TUTORÍAS -->
+        <div id="aula-tutorias" style="display:none;">
+          <div
+            style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:20px;">
+
+            <div style="background:#fff;border:1px solid #E5E7EB;border-radius:16px;padding:20px;">
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+                <div
+                  style="width:46px;height:46px;background:#059669;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Syne',sans-serif;font-weight:800;font-size:15px;flex-shrink:0;">
+                  AV</div>
+                <div>
+                  <p style="font-weight:700;font-size:14px;color:#111827;font-family:'Syne',sans-serif;">Alejandra
+                    Vásquez</p>
+                  <p style="font-size:12px;color:#6B7280;">Tutor par · Grado 11</p>
+                </div>
+                <div
+                  style="margin-left:auto;background:#ECFDF5;border:1px solid #A7F3D0;border-radius:20px;padding:3px 9px;font-size:11px;color:#047857;font-weight:600;">
+                  Disponible</div>
+              </div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;">
+                <span
+                  style="background:#F3F4F6;border-radius:20px;padding:3px 10px;font-size:11px;color:#374151;font-weight:500;">Matemáticas</span>
+                <span
+                  style="background:#F3F4F6;border-radius:20px;padding:3px 10px;font-size:11px;color:#374151;font-weight:500;">Física</span>
+              </div>
+              <div style="background:#F9FAFB;border-radius:10px;padding:10px;margin-bottom:14px;">
+                <p style="font-size:12px;color:#6B7280;">"Me costó mucho el álgebra, por eso sé cómo explicarlo sin que
+                  se sienta imposible."</p>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+                <span style="font-size:12px;color:#6B7280;">★★★★★ <span
+                    style="color:#111827;font-weight:600;">4.9</span> · 47 sesiones</span>
+                <span style="font-size:12px;color:#047857;font-weight:600;">Gratis · +30 XP</span>
+              </div>
+              <button
+                style="width:100%;padding:9px;background:#059669;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;">Agendar
+                tutoría</button>
+            </div>
+
+            <div style="background:#fff;border:1px solid #E5E7EB;border-radius:16px;padding:20px;">
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+                <div
+                  style="width:46px;height:46px;background:#7C3AED;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Syne',sans-serif;font-weight:800;font-size:15px;flex-shrink:0;">
+                  KP</div>
+                <div>
+                  <p style="font-weight:700;font-size:14px;color:#111827;font-family:'Syne',sans-serif;">Kevin Palomino
+                  </p>
+                  <p style="font-size:12px;color:#6B7280;">Tutor par · Grado 10</p>
+                </div>
+                <div
+                  style="margin-left:auto;background:#ECFDF5;border:1px solid #A7F3D0;border-radius:20px;padding:3px 9px;font-size:11px;color:#047857;font-weight:600;">
+                  Disponible</div>
+              </div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;">
+                <span
+                  style="background:#F3F4F6;border-radius:20px;padding:3px 10px;font-size:11px;color:#374151;font-weight:500;">Inglés</span>
+                <span
+                  style="background:#F3F4F6;border-radius:20px;padding:3px 10px;font-size:11px;color:#374151;font-weight:500;">Español</span>
+              </div>
+              <div style="background:#F9FAFB;border-radius:10px;padding:10px;margin-bottom:14px;">
+                <p style="font-size:12px;color:#6B7280;">"Estudié inglés solo con YouTube y series. Te enseño cómo
+                  aprenderlo de verdad."</p>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+                <span style="font-size:12px;color:#6B7280;">★★★★★ <span
+                    style="color:#111827;font-weight:600;">4.8</span> · 31 sesiones</span>
+                <span style="font-size:12px;color:#047857;font-weight:600;">Gratis · +30 XP</span>
+              </div>
+              <button
+                style="width:100%;padding:9px;background:#7C3AED;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;">Agendar
+                tutoría</button>
+            </div>
+
+            <div style="background:#fff;border:1px solid #E5E7EB;border-radius:16px;padding:20px;">
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+                <div
+                  style="width:46px;height:46px;background:#1D4ED8;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Syne',sans-serif;font-weight:800;font-size:15px;flex-shrink:0;">
+                  LC</div>
+                <div>
+                  <p style="font-weight:700;font-size:14px;color:#111827;font-family:'Syne',sans-serif;">Luisa Castaño
+                  </p>
+                  <p style="font-size:12px;color:#6B7280;">Tutor par · Grado 11</p>
+                </div>
+                <div
+                  style="margin-left:auto;background:#FEF3C7;border:1px solid #FDE68A;border-radius:20px;padding:3px 9px;font-size:11px;color:#B45309;font-weight:600;">
+                  Ocupada hoy</div>
+              </div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;">
+                <span
+                  style="background:#F3F4F6;border-radius:20px;padding:3px 10px;font-size:11px;color:#374151;font-weight:500;">Biología</span>
+                <span
+                  style="background:#F3F4F6;border-radius:20px;padding:3px 10px;font-size:11px;color:#374151;font-weight:500;">Química</span>
+              </div>
+              <div style="background:#F9FAFB;border-radius:10px;padding:10px;margin-bottom:14px;">
+                <p style="font-size:12px;color:#6B7280;">"Las ciencias no son difíciles, solo necesitan un buen punto de
+                  partida. Arranquemos desde ahí."</p>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+                <span style="font-size:12px;color:#6B7280;">★★★★☆ <span
+                    style="color:#111827;font-weight:600;">4.6</span> · 22 sesiones</span>
+                <span style="font-size:12px;color:#047857;font-weight:600;">Gratis · +30 XP</span>
+              </div>
+              <button
+                style="width:100%;padding:9px;background:#E5E7EB;color:#9CA3AF;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:not-allowed;font-family:'DM Sans',sans-serif;">Disponible
+                mañana</button>
+            </div>
+
+          </div>
+
+          <!-- CTA ser tutor -->
+          <div
+            style="background:linear-gradient(135deg,#ECFDF5,#D1FAE5);border:1px solid #A7F3D0;border-radius:16px;padding:24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+            <div style="flex:1;min-width:200px;">
+              <p style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:#064E3B;margin-bottom:6px;">
+                ¿Eres bueno en alguna materia? 💡</p>
+              <p style="font-size:13px;color:#047857;line-height:1.5;">Conviértete en tutor par y gana <strong>+100 XP
+                  por sesión</strong>. También puedes cobrar por tus tutorías y generar ingresos reales.</p>
+            </div>
+            <button
+              style="padding:11px 24px;background:#059669;color:#fff;border:none;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Syne',sans-serif;white-space:nowrap;">Quiero
+              ser tutor →</button>
+          </div>
+        </div>
+
+        <!-- TAB: MATERIAS -->
+        <div id="aula-materias" style="display:none;">
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;">
+
+            <div onclick="filtrarMateriaTab('Matemáticas')"
+              style="background:#fff;border:1px solid #E5E7EB;border-radius:14px;padding:20px 16px;cursor:pointer;text-align:center;transition:box-shadow .2s;"
+              onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,.1)'" onmouseout="this.style.boxShadow='none'">
+              <div style="font-size:32px;margin-bottom:10px;">📐</div>
+              <p style="font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:#111827;margin-bottom:4px;">
+                Matemáticas</p>
+              <p style="font-size:11px;color:#6B7280;">14 clases · 3 tutores</p>
+              <div style="margin-top:10px;background:#F3F4F6;border-radius:999px;height:6px;overflow:hidden;">
+                <div style="width:72%;height:100%;background:#059669;border-radius:999px;"></div>
+              </div>
+              <p style="font-size:10px;color:#6B7280;margin-top:4px;">72% completado</p>
+            </div>
+
+            <div onclick="filtrarMateriaTab('Ciencias')"
+              style="background:#fff;border:1px solid #E5E7EB;border-radius:14px;padding:20px 16px;cursor:pointer;text-align:center;"
+              onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,.1)'" onmouseout="this.style.boxShadow='none'">
+              <div style="font-size:32px;margin-bottom:10px;">⚗️</div>
+              <p style="font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:#111827;margin-bottom:4px;">
+                Ciencias</p>
+              <p style="font-size:11px;color:#6B7280;">10 clases · 2 tutores</p>
+              <div style="margin-top:10px;background:#F3F4F6;border-radius:999px;height:6px;overflow:hidden;">
+                <div style="width:40%;height:100%;background:#1D4ED8;border-radius:999px;"></div>
+              </div>
+              <p style="font-size:10px;color:#6B7280;margin-top:4px;">40% completado</p>
+            </div>
+
+            <div onclick="filtrarMateriaTab('Español')"
+              style="background:#fff;border:1px solid #E5E7EB;border-radius:14px;padding:20px 16px;cursor:pointer;text-align:center;"
+              onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,.1)'" onmouseout="this.style.boxShadow='none'">
+              <div style="font-size:32px;margin-bottom:10px;">✍️</div>
+              <p style="font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:#111827;margin-bottom:4px;">
+                Español</p>
+              <p style="font-size:11px;color:#6B7280;">8 clases · 2 tutores</p>
+              <div style="margin-top:10px;background:#F3F4F6;border-radius:999px;height:6px;overflow:hidden;">
+                <div style="width:55%;height:100%;background:#7C3AED;border-radius:999px;"></div>
+              </div>
+              <p style="font-size:10px;color:#6B7280;margin-top:4px;">55% completado</p>
+            </div>
+
+            <div onclick="filtrarMateriaTab('Inglés')"
+              style="background:#fff;border:1px solid #E5E7EB;border-radius:14px;padding:20px 16px;cursor:pointer;text-align:center;"
+              onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,.1)'" onmouseout="this.style.boxShadow='none'">
+              <div style="font-size:32px;margin-bottom:10px;">🌍</div>
+              <p style="font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:#111827;margin-bottom:4px;">
+                Inglés</p>
+              <p style="font-size:11px;color:#6B7280;">9 clases · 2 tutores</p>
+              <div style="margin-top:10px;background:#F3F4F6;border-radius:999px;height:6px;overflow:hidden;">
+                <div style="width:28%;height:100%;background:#B45309;border-radius:999px;"></div>
+              </div>
+              <p style="font-size:10px;color:#6B7280;margin-top:4px;">28% completado</p>
+            </div>
+
+            <div onclick="filtrarMateriaTab('Historia')"
+              style="background:#fff;border:1px solid #E5E7EB;border-radius:14px;padding:20px 16px;cursor:pointer;text-align:center;"
+              onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,.1)'" onmouseout="this.style.boxShadow='none'">
+              <div style="font-size:32px;margin-bottom:10px;">🏛️</div>
+              <p style="font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:#111827;margin-bottom:4px;">
+                Historia</p>
+              <p style="font-size:11px;color:#6B7280;">7 clases · 1 tutor</p>
+              <div style="margin-top:10px;background:#F3F4F6;border-radius:999px;height:6px;overflow:hidden;">
+                <div style="width:15%;height:100%;background:#BE123C;border-radius:999px;"></div>
+              </div>
+              <p style="font-size:10px;color:#6B7280;margin-top:4px;">15% completado</p>
+            </div>
+
+            <div
+              style="background:#F9FAFB;border:2px dashed #E5E7EB;border-radius:14px;padding:20px 16px;cursor:pointer;text-align:center;">
+              <div style="font-size:32px;margin-bottom:10px;">➕</div>
+              <p style="font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:#6B7280;margin-bottom:4px;">
+                Más materias</p>
+              <p style="font-size:11px;color:#9CA3AF;">Próximamente</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
     </div>
 
-    <!-- BARRA DE PROGRESO PERSONAL -->
-    <div style="background:#fff;border:1px solid #E5E7EB;border-radius:16px;padding:20px 24px;">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
-        <div>
-          <p style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#111827;">Tu progreso esta semana</p>
-          <p style="font-size:12px;color:#6B7280;margin-top:2px;">3 de 5 objetivos completados</p>
-        </div>
-        <div style="background:#ECFDF5;border:1px solid #A7F3D0;border-radius:20px;padding:4px 12px;">
-          <span style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#047857;">60%</span>
-        </div>
-      </div>
-      <div style="background:#F3F4F6;border-radius:999px;height:10px;overflow:hidden;">
-        <div style="width:60%;height:100%;background:linear-gradient(90deg,#059669,#34D399);border-radius:999px;transition:width .6s ease;"></div>
-      </div>
-      <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;">
-        <span style="background:#ECFDF5;border:1px solid #A7F3D0;border-radius:20px;padding:4px 12px;font-size:12px;color:#047857;font-weight:500;">✅ Ver clase de Mate</span>
-        <span style="background:#ECFDF5;border:1px solid #A7F3D0;border-radius:20px;padding:4px 12px;font-size:12px;color:#047857;font-weight:500;">✅ Tutoría completada</span>
-        <span style="background:#ECFDF5;border:1px solid #A7F3D0;border-radius:20px;padding:4px 12px;font-size:12px;color:#047857;font-weight:500;">✅ Quiz enviado</span>
-        <span style="background:#F9FAFB;border:1px solid #E5E7EB;border-radius:20px;padding:4px 12px;font-size:12px;color:#9CA3AF;font-weight:500;">⬜ Repasar Física</span>
-        <span style="background:#F9FAFB;border:1px solid #E5E7EB;border-radius:20px;padding:4px 12px;font-size:12px;color:#9CA3AF;font-weight:500;">⬜ Agendar tutoría</span>
-      </div>
-    </div>
-
-    <!-- TABS DE CONTENIDO -->
-    <div>
-      <div style="display:flex;gap:4px;background:#F3F4F6;padding:4px;border-radius:12px;width:fit-content;margin-bottom:20px;" id="aula-tabs">
-        <button onclick="aulaTab('clases')" id="tab-clases" style="padding:8px 18px;border-radius:9px;font-size:13px;font-weight:600;border:none;background:#fff;color:#047857;box-shadow:0 1px 4px rgba(0,0,0,.08);cursor:pointer;font-family:'DM Sans',sans-serif;">📹 Clases grabadas</button>
-        <button onclick="aulaTab('tutorias')" id="tab-tutorias" style="padding:8px 18px;border-radius:9px;font-size:13px;font-weight:600;border:none;background:transparent;color:#6B7280;cursor:pointer;font-family:'DM Sans',sans-serif;">🤝 Tutorías</button>
-        <button onclick="aulaTab('materias')" id="tab-materias" style="padding:8px 18px;border-radius:9px;font-size:13px;font-weight:600;border:none;background:transparent;color:#6B7280;cursor:pointer;font-family:'DM Sans',sans-serif;">📚 Materias</button>
-      </div>
-
-      <!-- TAB: CLASES GRABADAS -->
-      <div id="aula-clases">
-
-        <!-- filtros -->
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center;">
-          <span style="font-size:12px;color:#6B7280;font-weight:500;">Filtrar:</span>
-          <button onclick="filtrarClase(this,'Todas')" style="padding:5px 13px;border-radius:20px;font-size:12px;font-weight:600;border:1.5px solid #059669;background:#ECFDF5;color:#047857;cursor:pointer;font-family:'DM Sans',sans-serif;">Todas</button>
-          <button onclick="filtrarClase(this,'Matemáticas')" style="padding:5px 13px;border-radius:20px;font-size:12px;font-weight:500;border:1px solid #E5E7EB;background:#fff;color:#374151;cursor:pointer;font-family:'DM Sans',sans-serif;">Matemáticas</button>
-          <button onclick="filtrarClase(this,'Ciencias')" style="padding:5px 13px;border-radius:20px;font-size:12px;font-weight:500;border:1px solid #E5E7EB;background:#fff;color:#374151;cursor:pointer;font-family:'DM Sans',sans-serif;">Ciencias</button>
-          <button onclick="filtrarClase(this,'Español')" style="padding:5px 13px;border-radius:20px;font-size:12px;font-weight:500;border:1px solid #E5E7EB;background:#fff;color:#374151;cursor:pointer;font-family:'DM Sans',sans-serif;">Español</button>
-          <button onclick="filtrarClase(this,'Inglés')" style="padding:5px 13px;border-radius:20px;font-size:12px;font-weight:500;border:1px solid #E5E7EB;background:#fff;color:#374151;cursor:pointer;font-family:'DM Sans',sans-serif;">Inglés</button>
-          <button onclick="filtrarClase(this,'Historia')" style="padding:5px 13px;border-radius:20px;font-size:12px;font-weight:500;border:1px solid #E5E7EB;background:#fff;color:#374151;cursor:pointer;font-family:'DM Sans',sans-serif;">Historia</button>
-        </div>
-
-        <!-- grid de clases -->
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px;" id="clases-grid">
-
-          <!-- clase card -->
-          <div class="clase-card" data-materia="Matemáticas" style="background:#fff;border:1px solid #E5E7EB;border-radius:16px;overflow:hidden;transition:box-shadow .2s;">
-            <div style="background:linear-gradient(135deg,#064E3B,#059669);height:120px;display:flex;align-items:center;justify-content:center;position:relative;">
-              <span style="font-size:40px;">📐</span>
-              <div style="position:absolute;top:10px;right:10px;background:rgba(0,0,0,.3);border-radius:20px;padding:3px 9px;font-size:11px;color:#fff;font-weight:600;">18 min</div>
-              <div style="position:absolute;bottom:10px;left:10px;background:#ECFDF5;border-radius:20px;padding:3px 9px;font-size:11px;color:#047857;font-weight:600;">Matemáticas</div>
-            </div>
-            <div style="padding:16px;">
-              <h3 style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#111827;margin-bottom:6px;">Fracciones y decimales: de cero a profe</h3>
-              <p style="font-size:12px;color:#6B7280;margin-bottom:12px;">Entiende de una vez por qué 1/2 = 0.5. Sin vueltas.</p>
-              <div style="display:flex;align-items:center;justify-content:space-between;">
-                <div style="display:flex;align-items:center;gap:5px;">
-                  <div style="width:22px;height:22px;background:#059669;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:9px;font-weight:700;">YL</div>
-                  <span style="font-size:11px;color:#6B7280;">Yuliana López</span>
-                </div>
-                <div style="display:flex;gap:6px;">
-                  <span style="font-size:11px;color:#F59E0B;font-weight:600;">★ 4.9</span>
-                  <span style="font-size:11px;color:#6B7280;">+50 XP</span>
-                </div>
-              </div>
-              <button onclick="verClase(this)" style="margin-top:12px;width:100%;padding:9px;background:#059669;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .15s;">▶ Ver clase</button>
-            </div>
-          </div>
-
-          <div class="clase-card" data-materia="Ciencias" style="background:#fff;border:1px solid #E5E7EB;border-radius:16px;overflow:hidden;">
-            <div style="background:linear-gradient(135deg,#1D4ED8,#3B82F6);height:120px;display:flex;align-items:center;justify-content:center;position:relative;">
-              <span style="font-size:40px;">⚗️</span>
-              <div style="position:absolute;top:10px;right:10px;background:rgba(0,0,0,.3);border-radius:20px;padding:3px 9px;font-size:11px;color:#fff;font-weight:600;">24 min</div>
-              <div style="position:absolute;bottom:10px;left:10px;background:#EFF6FF;border-radius:20px;padding:3px 9px;font-size:11px;color:#1D4ED8;font-weight:600;">Ciencias</div>
-            </div>
-            <div style="padding:16px;">
-              <h3 style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#111827;margin-bottom:6px;">La célula: la historia de tu existencia</h3>
-              <p style="font-size:12px;color:#6B7280;margin-bottom:12px;">Mitocondria, núcleo, membrana. Spoiler: todo importa.</p>
-              <div style="display:flex;align-items:center;justify-content:space-between;">
-                <div style="display:flex;align-items:center;gap:5px;">
-                  <div style="width:22px;height:22px;background:#1D4ED8;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:9px;font-weight:700;">CM</div>
-                  <span style="font-size:11px;color:#6B7280;">Carlos Múnera</span>
-                </div>
-                <div style="display:flex;gap:6px;">
-                  <span style="font-size:11px;color:#F59E0B;font-weight:600;">★ 4.8</span>
-                  <span style="font-size:11px;color:#6B7280;">+50 XP</span>
-                </div>
-              </div>
-              <button onclick="verClase(this)" style="margin-top:12px;width:100%;padding:9px;background:#1D4ED8;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;">▶ Ver clase</button>
-            </div>
-          </div>
-
-          <div class="clase-card" data-materia="Español" style="background:#fff;border:1px solid #E5E7EB;border-radius:16px;overflow:hidden;">
-            <div style="background:linear-gradient(135deg,#7C3AED,#A78BFA);height:120px;display:flex;align-items:center;justify-content:center;position:relative;">
-              <span style="font-size:40px;">✍️</span>
-              <div style="position:absolute;top:10px;right:10px;background:rgba(0,0,0,.3);border-radius:20px;padding:3px 9px;font-size:11px;color:#fff;font-weight:600;">15 min</div>
-              <div style="position:absolute;bottom:10px;left:10px;background:#F5F3FF;border-radius:20px;padding:3px 9px;font-size:11px;color:#6D28D9;font-weight:600;">Español</div>
-            </div>
-            <div style="padding:16px;">
-              <h3 style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#111827;margin-bottom:6px;">Conectores: escribe sin perderte</h3>
-              <p style="font-size:12px;color:#6B7280;margin-bottom:12px;">Sin embargo, además, por lo tanto… aprende a usarlos bien.</p>
-              <div style="display:flex;align-items:center;justify-content:space-between;">
-                <div style="display:flex;align-items:center;gap:5px;">
-                  <div style="width:22px;height:22px;background:#7C3AED;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:9px;font-weight:700;">MT</div>
-                  <span style="font-size:11px;color:#6B7280;">Mariana Torres</span>
-                </div>
-                <div style="display:flex;gap:6px;">
-                  <span style="font-size:11px;color:#F59E0B;font-weight:600;">★ 4.7</span>
-                  <span style="font-size:11px;color:#6B7280;">+50 XP</span>
-                </div>
-              </div>
-              <button onclick="verClase(this)" style="margin-top:12px;width:100%;padding:9px;background:#7C3AED;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;">▶ Ver clase</button>
-            </div>
-          </div>
-
-          <div class="clase-card" data-materia="Inglés" style="background:#fff;border:1px solid #E5E7EB;border-radius:16px;overflow:hidden;">
-            <div style="background:linear-gradient(135deg,#B45309,#F59E0B);height:120px;display:flex;align-items:center;justify-content:center;position:relative;">
-              <span style="font-size:40px;">🌍</span>
-              <div style="position:absolute;top:10px;right:10px;background:rgba(0,0,0,.3);border-radius:20px;padding:3px 9px;font-size:11px;color:#fff;font-weight:600;">20 min</div>
-              <div style="position:absolute;bottom:10px;left:10px;background:#FEF3C7;border-radius:20px;padding:3px 9px;font-size:11px;color:#B45309;font-weight:600;">Inglés</div>
-            </div>
-            <div style="padding:16px;">
-              <h3 style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#111827;margin-bottom:6px;">Verbos irregulares: los 40 que debes saber</h3>
-              <p style="font-size:12px;color:#6B7280;margin-bottom:12px;">De go/went/gone a think/thought. Sin memorizar de chirona.</p>
-              <div style="display:flex;align-items:center;justify-content:space-between;">
-                <div style="display:flex;align-items:center;gap:5px;">
-                  <div style="width:22px;height:22px;background:#B45309;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:9px;font-weight:700;">JR</div>
-                  <span style="font-size:11px;color:#6B7280;">Juan Ríos</span>
-                </div>
-                <div style="display:flex;gap:6px;">
-                  <span style="font-size:11px;color:#F59E0B;font-weight:600;">★ 4.9</span>
-                  <span style="font-size:11px;color:#6B7280;">+50 XP</span>
-                </div>
-              </div>
-              <button onclick="verClase(this)" style="margin-top:12px;width:100%;padding:9px;background:#B45309;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;">▶ Ver clase</button>
-            </div>
-          </div>
-
-          <div class="clase-card" data-materia="Historia" style="background:#fff;border:1px solid #E5E7EB;border-radius:16px;overflow:hidden;">
-            <div style="background:linear-gradient(135deg,#BE123C,#FB7185);height:120px;display:flex;align-items:center;justify-content:center;position:relative;">
-              <span style="font-size:40px;">🏛️</span>
-              <div style="position:absolute;top:10px;right:10px;background:rgba(0,0,0,.3);border-radius:20px;padding:3px 9px;font-size:11px;color:#fff;font-weight:600;">22 min</div>
-              <div style="position:absolute;bottom:10px;left:10px;background:#FFF1F2;border-radius:20px;padding:3px 9px;font-size:11px;color:#BE123C;font-weight:600;">Historia</div>
-            </div>
-            <div style="padding:16px;">
-              <h3 style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#111827;margin-bottom:6px;">Colombia en el siglo XX: lo que nadie te contó</h3>
-              <p style="font-size:12px;color:#6B7280;margin-bottom:12px;">Bipartidismo, Bogotazo y más. Historia que te explica el presente.</p>
-              <div style="display:flex;align-items:center;justify-content:space-between;">
-                <div style="display:flex;align-items:center;gap:5px;">
-                  <div style="width:22px;height:22px;background:#BE123C;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:9px;font-weight:700;">SR</div>
-                  <span style="font-size:11px;color:#6B7280;">Sandra Roldán</span>
-                </div>
-                <div style="display:flex;gap:6px;">
-                  <span style="font-size:11px;color:#F59E0B;font-weight:600;">★ 4.8</span>
-                  <span style="font-size:11px;color:#6B7280;">+50 XP</span>
-                </div>
-              </div>
-              <button onclick="verClase(this)" style="margin-top:12px;width:100%;padding:9px;background:#BE123C;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;">▶ Ver clase</button>
-            </div>
-          </div>
-
-          <div class="clase-card" data-materia="Matemáticas" style="background:#fff;border:1px solid #E5E7EB;border-radius:16px;overflow:hidden;">
-            <div style="background:linear-gradient(135deg,#064E3B,#059669);height:120px;display:flex;align-items:center;justify-content:center;position:relative;">
-              <span style="font-size:40px;">📊</span>
-              <div style="position:absolute;top:10px;right:10px;background:rgba(0,0,0,.3);border-radius:20px;padding:3px 9px;font-size:11px;color:#fff;font-weight:600;">30 min</div>
-              <div style="position:absolute;bottom:10px;left:10px;background:#ECFDF5;border-radius:20px;padding:3px 9px;font-size:11px;color:#047857;font-weight:600;">Matemáticas</div>
-            </div>
-            <div style="padding:16px;">
-              <h3 style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#111827;margin-bottom:6px;">Estadística básica para el ICFES</h3>
-              <p style="font-size:12px;color:#6B7280;margin-bottom:12px;">Media, mediana, moda. Las tres que siempre salen en la prueba.</p>
-              <div style="display:flex;align-items:center;justify-content:space-between;">
-                <div style="display:flex;align-items:center;gap:5px;">
-                  <div style="width:22px;height:22px;background:#059669;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:9px;font-weight:700;">DV</div>
-                  <span style="font-size:11px;color:#6B7280;">Daniel Vargas</span>
-                </div>
-                <div style="display:flex;gap:6px;">
-                  <span style="font-size:11px;color:#F59E0B;font-weight:600;">★ 5.0</span>
-                  <span style="font-size:11px;color:#6B7280;">+50 XP</span>
-                </div>
-              </div>
-              <button onclick="verClase(this)" style="margin-top:12px;width:100%;padding:9px;background:#059669;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;">▶ Ver clase</button>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- TAB: TUTORÍAS -->
-      <div id="aula-tutorias" style="display:none;">
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:20px;">
-
-          <div style="background:#fff;border:1px solid #E5E7EB;border-radius:16px;padding:20px;">
-            <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
-              <div style="width:46px;height:46px;background:#059669;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Syne',sans-serif;font-weight:800;font-size:15px;flex-shrink:0;">AV</div>
-              <div>
-                <p style="font-weight:700;font-size:14px;color:#111827;font-family:'Syne',sans-serif;">Alejandra Vásquez</p>
-                <p style="font-size:12px;color:#6B7280;">Tutor par · Grado 11</p>
-              </div>
-              <div style="margin-left:auto;background:#ECFDF5;border:1px solid #A7F3D0;border-radius:20px;padding:3px 9px;font-size:11px;color:#047857;font-weight:600;">Disponible</div>
-            </div>
-            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;">
-              <span style="background:#F3F4F6;border-radius:20px;padding:3px 10px;font-size:11px;color:#374151;font-weight:500;">Matemáticas</span>
-              <span style="background:#F3F4F6;border-radius:20px;padding:3px 10px;font-size:11px;color:#374151;font-weight:500;">Física</span>
-            </div>
-            <div style="background:#F9FAFB;border-radius:10px;padding:10px;margin-bottom:14px;">
-              <p style="font-size:12px;color:#6B7280;">"Me costó mucho el álgebra, por eso sé cómo explicarlo sin que se sienta imposible."</p>
-            </div>
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
-              <span style="font-size:12px;color:#6B7280;">★★★★★ <span style="color:#111827;font-weight:600;">4.9</span> · 47 sesiones</span>
-              <span style="font-size:12px;color:#047857;font-weight:600;">Gratis · +30 XP</span>
-            </div>
-            <button style="width:100%;padding:9px;background:#059669;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;">Agendar tutoría</button>
-          </div>
-
-          <div style="background:#fff;border:1px solid #E5E7EB;border-radius:16px;padding:20px;">
-            <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
-              <div style="width:46px;height:46px;background:#7C3AED;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Syne',sans-serif;font-weight:800;font-size:15px;flex-shrink:0;">KP</div>
-              <div>
-                <p style="font-weight:700;font-size:14px;color:#111827;font-family:'Syne',sans-serif;">Kevin Palomino</p>
-                <p style="font-size:12px;color:#6B7280;">Tutor par · Grado 10</p>
-              </div>
-              <div style="margin-left:auto;background:#ECFDF5;border:1px solid #A7F3D0;border-radius:20px;padding:3px 9px;font-size:11px;color:#047857;font-weight:600;">Disponible</div>
-            </div>
-            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;">
-              <span style="background:#F3F4F6;border-radius:20px;padding:3px 10px;font-size:11px;color:#374151;font-weight:500;">Inglés</span>
-              <span style="background:#F3F4F6;border-radius:20px;padding:3px 10px;font-size:11px;color:#374151;font-weight:500;">Español</span>
-            </div>
-            <div style="background:#F9FAFB;border-radius:10px;padding:10px;margin-bottom:14px;">
-              <p style="font-size:12px;color:#6B7280;">"Estudié inglés solo con YouTube y series. Te enseño cómo aprenderlo de verdad."</p>
-            </div>
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
-              <span style="font-size:12px;color:#6B7280;">★★★★★ <span style="color:#111827;font-weight:600;">4.8</span> · 31 sesiones</span>
-              <span style="font-size:12px;color:#047857;font-weight:600;">Gratis · +30 XP</span>
-            </div>
-            <button style="width:100%;padding:9px;background:#7C3AED;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;">Agendar tutoría</button>
-          </div>
-
-          <div style="background:#fff;border:1px solid #E5E7EB;border-radius:16px;padding:20px;">
-            <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
-              <div style="width:46px;height:46px;background:#1D4ED8;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Syne',sans-serif;font-weight:800;font-size:15px;flex-shrink:0;">LC</div>
-              <div>
-                <p style="font-weight:700;font-size:14px;color:#111827;font-family:'Syne',sans-serif;">Luisa Castaño</p>
-                <p style="font-size:12px;color:#6B7280;">Tutor par · Grado 11</p>
-              </div>
-              <div style="margin-left:auto;background:#FEF3C7;border:1px solid #FDE68A;border-radius:20px;padding:3px 9px;font-size:11px;color:#B45309;font-weight:600;">Ocupada hoy</div>
-            </div>
-            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;">
-              <span style="background:#F3F4F6;border-radius:20px;padding:3px 10px;font-size:11px;color:#374151;font-weight:500;">Biología</span>
-              <span style="background:#F3F4F6;border-radius:20px;padding:3px 10px;font-size:11px;color:#374151;font-weight:500;">Química</span>
-            </div>
-            <div style="background:#F9FAFB;border-radius:10px;padding:10px;margin-bottom:14px;">
-              <p style="font-size:12px;color:#6B7280;">"Las ciencias no son difíciles, solo necesitan un buen punto de partida. Arranquemos desde ahí."</p>
-            </div>
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
-              <span style="font-size:12px;color:#6B7280;">★★★★☆ <span style="color:#111827;font-weight:600;">4.6</span> · 22 sesiones</span>
-              <span style="font-size:12px;color:#047857;font-weight:600;">Gratis · +30 XP</span>
-            </div>
-            <button style="width:100%;padding:9px;background:#E5E7EB;color:#9CA3AF;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:not-allowed;font-family:'DM Sans',sans-serif;">Disponible mañana</button>
-          </div>
-
-        </div>
-
-        <!-- CTA ser tutor -->
-        <div style="background:linear-gradient(135deg,#ECFDF5,#D1FAE5);border:1px solid #A7F3D0;border-radius:16px;padding:24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
-          <div style="flex:1;min-width:200px;">
-            <p style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:#064E3B;margin-bottom:6px;">¿Eres bueno en alguna materia? 💡</p>
-            <p style="font-size:13px;color:#047857;line-height:1.5;">Conviértete en tutor par y gana <strong>+100 XP por sesión</strong>. También puedes cobrar por tus tutorías y generar ingresos reales.</p>
-          </div>
-          <button style="padding:11px 24px;background:#059669;color:#fff;border:none;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Syne',sans-serif;white-space:nowrap;">Quiero ser tutor →</button>
-        </div>
-      </div>
-
-      <!-- TAB: MATERIAS -->
-      <div id="aula-materias" style="display:none;">
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;">
-
-          <div onclick="filtrarMateriaTab('Matemáticas')" style="background:#fff;border:1px solid #E5E7EB;border-radius:14px;padding:20px 16px;cursor:pointer;text-align:center;transition:box-shadow .2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,.1)'" onmouseout="this.style.boxShadow='none'">
-            <div style="font-size:32px;margin-bottom:10px;">📐</div>
-            <p style="font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:#111827;margin-bottom:4px;">Matemáticas</p>
-            <p style="font-size:11px;color:#6B7280;">14 clases · 3 tutores</p>
-            <div style="margin-top:10px;background:#F3F4F6;border-radius:999px;height:6px;overflow:hidden;"><div style="width:72%;height:100%;background:#059669;border-radius:999px;"></div></div>
-            <p style="font-size:10px;color:#6B7280;margin-top:4px;">72% completado</p>
-          </div>
-
-          <div onclick="filtrarMateriaTab('Ciencias')" style="background:#fff;border:1px solid #E5E7EB;border-radius:14px;padding:20px 16px;cursor:pointer;text-align:center;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,.1)'" onmouseout="this.style.boxShadow='none'">
-            <div style="font-size:32px;margin-bottom:10px;">⚗️</div>
-            <p style="font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:#111827;margin-bottom:4px;">Ciencias</p>
-            <p style="font-size:11px;color:#6B7280;">10 clases · 2 tutores</p>
-            <div style="margin-top:10px;background:#F3F4F6;border-radius:999px;height:6px;overflow:hidden;"><div style="width:40%;height:100%;background:#1D4ED8;border-radius:999px;"></div></div>
-            <p style="font-size:10px;color:#6B7280;margin-top:4px;">40% completado</p>
-          </div>
-
-          <div onclick="filtrarMateriaTab('Español')" style="background:#fff;border:1px solid #E5E7EB;border-radius:14px;padding:20px 16px;cursor:pointer;text-align:center;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,.1)'" onmouseout="this.style.boxShadow='none'">
-            <div style="font-size:32px;margin-bottom:10px;">✍️</div>
-            <p style="font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:#111827;margin-bottom:4px;">Español</p>
-            <p style="font-size:11px;color:#6B7280;">8 clases · 2 tutores</p>
-            <div style="margin-top:10px;background:#F3F4F6;border-radius:999px;height:6px;overflow:hidden;"><div style="width:55%;height:100%;background:#7C3AED;border-radius:999px;"></div></div>
-            <p style="font-size:10px;color:#6B7280;margin-top:4px;">55% completado</p>
-          </div>
-
-          <div onclick="filtrarMateriaTab('Inglés')" style="background:#fff;border:1px solid #E5E7EB;border-radius:14px;padding:20px 16px;cursor:pointer;text-align:center;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,.1)'" onmouseout="this.style.boxShadow='none'">
-            <div style="font-size:32px;margin-bottom:10px;">🌍</div>
-            <p style="font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:#111827;margin-bottom:4px;">Inglés</p>
-            <p style="font-size:11px;color:#6B7280;">9 clases · 2 tutores</p>
-            <div style="margin-top:10px;background:#F3F4F6;border-radius:999px;height:6px;overflow:hidden;"><div style="width:28%;height:100%;background:#B45309;border-radius:999px;"></div></div>
-            <p style="font-size:10px;color:#6B7280;margin-top:4px;">28% completado</p>
-          </div>
-
-          <div onclick="filtrarMateriaTab('Historia')" style="background:#fff;border:1px solid #E5E7EB;border-radius:14px;padding:20px 16px;cursor:pointer;text-align:center;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,.1)'" onmouseout="this.style.boxShadow='none'">
-            <div style="font-size:32px;margin-bottom:10px;">🏛️</div>
-            <p style="font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:#111827;margin-bottom:4px;">Historia</p>
-            <p style="font-size:11px;color:#6B7280;">7 clases · 1 tutor</p>
-            <div style="margin-top:10px;background:#F3F4F6;border-radius:999px;height:6px;overflow:hidden;"><div style="width:15%;height:100%;background:#BE123C;border-radius:999px;"></div></div>
-            <p style="font-size:10px;color:#6B7280;margin-top:4px;">15% completado</p>
-          </div>
-
-          <div style="background:#F9FAFB;border:2px dashed #E5E7EB;border-radius:14px;padding:20px 16px;cursor:pointer;text-align:center;">
-            <div style="font-size:32px;margin-bottom:10px;">➕</div>
-            <p style="font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:#6B7280;margin-bottom:4px;">Más materias</p>
-            <p style="font-size:11px;color:#9CA3AF;">Próximamente</p>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-</div>
-
-<!-- =============================================
+    <!-- =============================================
   MODAL: REPRODUCTOR DE CLASE
   Agregar al final del <body>
 ============================================= -->
-<div id="modal-clase" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:999;align-items:center;justify-content:center;padding:20px;">
-  <div style="background:#fff;border-radius:20px;width:100%;max-width:560px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.2);">
-    <div style="background:linear-gradient(135deg,#064E3B,#059669);padding:24px;position:relative;">
-      <button onclick="cerrarModal()" style="position:absolute;top:16px;right:16px;width:30px;height:30px;background:rgba(255,255,255,.2);border:none;border-radius:50%;color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;">✕</button>
-      <p style="font-size:11px;color:rgba(255,255,255,.7);margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em;font-weight:500;">Reproduciendo</p>
-      <h3 id="modal-titulo" style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:#fff;line-height:1.3;margin-bottom:0;"></h3>
-    </div>
-    <div style="padding:24px;">
-      <!-- simulación reproductor -->
-      <div style="background:#F3F4F6;border-radius:12px;height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;margin-bottom:20px;">
-        <div style="font-size:48px;">▶️</div>
-        <p style="font-size:13px;color:#6B7280;">Video en reproducción...</p>
-      </div>
-      <!-- barra de progreso del video -->
-      <div style="background:#E5E7EB;border-radius:999px;height:6px;margin-bottom:8px;cursor:pointer;">
-        <div id="video-progress" style="width:0%;height:100%;background:#059669;border-radius:999px;transition:width 3s linear;"></div>
-      </div>
-      <div style="display:flex;justify-content:space-between;font-size:11px;color:#9CA3AF;margin-bottom:20px;">
-        <span>0:00</span><span id="video-duracion">18:00</span>
-      </div>
-      <div style="background:#ECFDF5;border:1px solid #A7F3D0;border-radius:12px;padding:14px;display:flex;align-items:center;gap:12px;">
-        <span style="font-size:24px;">🏆</span>
-        <div>
-          <p style="font-size:13px;font-weight:700;color:#047857;margin-bottom:2px;">¡Gana XP al completar esta clase!</p>
-          <p style="font-size:12px;color:#059669;">+50 XP se agregarán a tu perfil al terminar el video.</p>
+    <div id="modal-clase"
+      style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:999;align-items:center;justify-content:center;padding:20px;">
+      <div
+        style="background:#fff;border-radius:20px;width:100%;max-width:560px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.2);">
+        <div style="background:linear-gradient(135deg,#064E3B,#059669);padding:24px;position:relative;">
+          <button onclick="cerrarModal()"
+            style="position:absolute;top:16px;right:16px;width:30px;height:30px;background:rgba(255,255,255,.2);border:none;border-radius:50%;color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;">✕</button>
+          <p
+            style="font-size:11px;color:rgba(255,255,255,.7);margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em;font-weight:500;">
+            Reproduciendo</p>
+          <h3 id="modal-titulo"
+            style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:#fff;line-height:1.3;margin-bottom:0;">
+          </h3>
+        </div>
+        <div style="padding:24px;">
+          <!-- simulación reproductor -->
+          <div
+            style="background:#F3F4F6;border-radius:12px;height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;margin-bottom:20px;">
+            <div style="font-size:48px;">▶️</div>
+            <p style="font-size:13px;color:#6B7280;">Video en reproducción...</p>
+          </div>
+          <!-- barra de progreso del video -->
+          <div style="background:#E5E7EB;border-radius:999px;height:6px;margin-bottom:8px;cursor:pointer;">
+            <div id="video-progress"
+              style="width:0%;height:100%;background:#059669;border-radius:999px;transition:width 3s linear;"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:11px;color:#9CA3AF;margin-bottom:20px;">
+            <span>0:00</span><span id="video-duracion">18:00</span>
+          </div>
+          <div
+            style="background:#ECFDF5;border:1px solid #A7F3D0;border-radius:12px;padding:14px;display:flex;align-items:center;gap:12px;">
+            <span style="font-size:24px;">🏆</span>
+            <div>
+              <p style="font-size:13px;font-weight:700;color:#047857;margin-bottom:2px;">¡Gana XP al completar esta
+                clase!</p>
+              <p style="font-size:12px;color:#059669;">+50 XP se agregarán a tu perfil al terminar el video.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-</main>
-<nav class="mobile-nav"><div class="mob-nav-items" id="mobileNav"></div></nav>
-<div class="mob-spacer"></div>
-<script src="app.js" defer></script>
+  </main>
+  <nav class="mobile-nav">
+    <div class="mob-nav-items" id="mobileNav"></div>
+  </nav>
+  <div class="mob-spacer"></div>
+  <script src="app.js" defer></script>
 </body>
+
 </html>
