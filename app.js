@@ -2,7 +2,7 @@
 // ─── Source: js/data.js ───
 const NAV_ITEMS = [
   { label: 'Inicio', href: 'pag.html', icon: '🏠' },
-  { label: 'Aula Extendida', href: 'index-second-page.html', icon: '📚' }
+  { label: 'Aula Extendida', href: 'pag2.html', icon: '📚' }
 ];
 
 const QUOTES = [
@@ -1033,7 +1033,7 @@ function initPage() {
     }
   }
 
-  // Page 2 (index-second-page.html)
+  // Page 2 (pag2.html)
   if (document.getElementById('aula-tabs')) {
     aulaTab('clases');
   }
